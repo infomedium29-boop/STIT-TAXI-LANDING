@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="STIT TAXI - pouzdan taxi i privatni prijevoz u Njivicama i na otoku Krku. Lokalni prijevoz, turistički transferi i vožnje po dogovoru." />
+  <title>STIT TAXI | Taxi i privatni prijevoz Njivice - otok Krk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg-2:#0b1728;
+      --surface:#101d30;
+      --surface-2:#14243b;
+      --text:#f7fbff;
+      --muted:#a8b6ca;
+      --soft:#d7e1ee;
+      --gold:#d8ae62;
+      --gold-2:#f1d59a;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 30px 100px rgba(0,0,0,.45);
+      --radius:28px;
+      --radius-sm:18px;
+      --max:1180px;
+      --nav-h:86px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(216,174,98,.22), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(58,128,199,.18), transparent 32%),
+        linear-gradient(180deg,#060d18 0%,#081321 43%,#050a12 100%);
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img,svg{max-width:100%;display:block}
+    button,input,textarea,select{font:inherit}
+    ::selection{background:rgba(216,174,98,.35);color:#fff}
+
+    .page-noise{
+      position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.08;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    }
+
+    .container{width:min(var(--max),calc(100% - 40px));margin-inline:auto;position:relative;z-index:1}
+    .section{padding:110px 0;position:relative}
+    .section-tight{padding:84px 0}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      color:var(--gold-2);font-weight:800;text-transform:uppercase;
+      letter-spacing:.16em;font-size:12px;margin-bottom:18px;
+    }
+    .eyebrow:before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+    h1,h2,h3{line-height:1.04;letter-spacing:-.04em}
+    h1{font-size:clamp(44px,7.2vw,86px);font-weight:900;max-width:920px}
+    h2{font-size:clamp(34px,4.6vw,58px);font-weight:900;max-width:760px}
+    h3{font-size:23px;font-weight:850;letter-spacing:-.03em}
+    p{color:var(--muted);font-size:16px;line-height:1.85}
+    .lead{font-size:clamp(17px,2vw,21px);line-height:1.85;color:#cbd7e8;max-width:740px;margin-top:24px}
+    .gold{color:var(--gold-2)}
+
+    .btn{
+      min-height:54px;border:1px solid transparent;border-radius:999px;padding:0 24px;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      font-weight:850;letter-spacing:-.01em;cursor:pointer;transition:.35s ease;
+      white-space:nowrap;position:relative;overflow:hidden;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold-2),var(--gold));
+      color:#111827;box-shadow:0 16px 44px rgba(216,174,98,.24);
+    }
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 60px rgba(216,174,98,.32)}
+    .btn-secondary{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06);backdrop-filter:blur(18px);color:#fff}
+    .btn-secondary:hover{border-color:rgba(216,174,98,.5);background:rgba(216,174,98,.09);transform:translateY(-3px)}
+    .btn svg{width:18px;height:18px}
+
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;
+      transition:.3s ease;background:rgba(5,10,18,.18);backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav.scrolled{height:74px;background:rgba(5,10,18,.86);box-shadow:0 15px 60px rgba(0,0,0,.28)}
+    .nav-inner{width:min(var(--max),calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-.04em;font-size:20px;z-index:52}
+    .brand-mark{
+      width:46px;height:46px;border-radius:16px;display:grid;place-items:center;color:#101010;font-weight:950;
+      background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 12px 40px rgba(216,174,98,.25);
+    }
+    .brand span small{display:block;color:var(--muted);font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-top:-2px;font-weight:800}
+    .nav-links{display:flex;align-items:center;gap:28px;color:#d9e3f2;font-weight:700;font-size:14px}
+    .nav-links a{opacity:.82;transition:.25s ease}
+    .nav-links a:hover{opacity:1;color:var(--gold-2)}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .nav-actions .btn{min-height:46px;padding:0 18px;font-size:14px}
+    .menu-btn{display:none;width:48px;height:48px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;z-index:52}
+    .menu-btn span{display:block;width:20px;height:2px;background:#fff;margin:5px auto;border-radius:20px;transition:.25s ease}
+    .menu-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .menu-open .menu-btn span:nth-child(2){opacity:0}
+    .menu-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .hero{min-height:100svh;padding:calc(var(--nav-h) + 54px) 0 78px;display:flex;align-items:center;position:relative;overflow:hidden}
+    .hero:before{
+      content:"";position:absolute;inset:0;background:
+      linear-gradient(90deg,rgba(5,10,18,.9) 0%,rgba(5,10,18,.72) 42%,rgba(5,10,18,.34) 100%),
+      radial-gradient(circle at 78% 54%,rgba(216,174,98,.2),transparent 32%);
+      z-index:0;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:54px;align-items:center;width:100%}
+    .hero-copy{position:relative;z-index:2}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+    .tag{border:1px solid rgba(216,174,98,.27);background:rgba(216,174,98,.08);color:#f3dcaa;border-radius:999px;padding:9px 13px;font-size:13px;font-weight:800;backdrop-filter:blur(16px)}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+    .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px;max-width:690px}
+    .trust-item{padding:16px 18px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.055);backdrop-filter:blur(18px)}
+    .trust-item strong{display:block;font-size:24px;color:#fff;letter-spacing:-.04em;line-height:1.1}
+    .trust-item span{display:block;margin-top:5px;color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+
+    .hero-visual{position:relative;min-height:540px;z-index:1;perspective:1000px}
+    .car-card{
+      position:absolute;inset:26px 0 0 0;border:1px solid rgba(255,255,255,.12);border-radius:42px;
+      background:
+        linear-gradient(160deg,rgba(255,255,255,.13),rgba(255,255,255,.04)),
+        radial-gradient(circle at 72% 18%,rgba(216,174,98,.33),transparent 29%),
+        linear-gradient(145deg,#14243b,#07111f 68%);
+      box-shadow:var(--shadow);overflow:hidden;transform:rotateY(-6deg) rotateX(4deg);
+    }
+    .car-card:before{
+      content:"";position:absolute;inset:0;background:
+      linear-gradient(135deg,rgba(255,255,255,.18),transparent 34%),
+      radial-gradient(circle at 20% 80%,rgba(75,130,190,.22),transparent 32%);
+    }
+    .coast-line{position:absolute;left:34px;right:34px;bottom:112px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
+    .road{position:absolute;left:-12%;right:-12%;bottom:0;height:150px;background:linear-gradient(180deg,rgba(10,19,32,.2),#02060c);transform:skewY(-4deg);transform-origin:right bottom}
+    .road:before{content:"";position:absolute;left:18%;right:10%;top:44%;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.45) 0 50px,transparent 50px 80px);opacity:.52}
+    .car-svg{position:absolute;left:4%;right:2%;bottom:76px;filter:drop-shadow(0 30px 35px rgba(0,0,0,.58));animation:floatCar 6s ease-in-out infinite}
+    @keyframes floatCar{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .glass-pill{position:absolute;right:24px;top:24px;width:min(310px,70%);padding:18px;border-radius:24px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(20px);box-shadow:0 18px 60px rgba(0,0,0,.25)}
+    .glass-pill strong{display:block;font-size:14px;color:#fff;margin-bottom:5px}.glass-pill span{color:var(--muted);font-size:13px;line-height:1.55}
+    .route-card{position:absolute;left:-12px;bottom:26px;width:270px;padding:20px;border-radius:26px;background:rgba(8,17,31,.78);border:1px solid rgba(216,174,98,.25);backdrop-filter:blur(20px);box-shadow:0 26px 80px rgba(0,0,0,.35)}
+    .route-card .mini{font-size:12px;font-weight:900;color:var(--gold-2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}.route-card strong{font-size:22px;line-height:1.15;display:block}.route-card p{font-size:13px;line-height:1.6;margin-top:8px}
+
+    .marquee{border-block:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035);overflow:hidden;white-space:nowrap;position:relative;z-index:2}
+    .marquee-track{display:inline-flex;gap:34px;padding:16px 0;animation:marq 28s linear infinite;color:#dce6f5;font-weight:850;letter-spacing:.03em;text-transform:uppercase;font-size:13px}
+    .marquee-track span{display:inline-flex;align-items:center;gap:34px}.marquee-track span:after{content:"•";color:var(--gold)}
+    @keyframes marq{to{transform:translateX(-50%)}}
+
+    .split{display:grid;grid-template-columns:.88fr 1.12fr;gap:54px;align-items:end}
+    .section-head{margin-bottom:48px}.section-head p{max-width:680px;margin-top:18px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      position:relative;padding:28px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+      box-shadow:0 20px 70px rgba(0,0,0,.18);overflow:hidden;transition:.35s ease;min-height:250px;
+    }
+    .card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,rgba(216,174,98,.16),transparent 34%);opacity:0;transition:.35s ease}
+    .card:hover{transform:translateY(-8px);border-color:rgba(216,174,98,.33);box-shadow:0 26px 90px rgba(0,0,0,.28)}
+    .card:hover:before{opacity:1}
+    .icon{width:54px;height:54px;border-radius:18px;background:rgba(216,174,98,.12);border:1px solid rgba(216,174,98,.24);display:grid;place-items:center;color:var(--gold-2);margin-bottom:22px;position:relative;z-index:1}
+    .icon svg{width:24px;height:24px}.card h3,.card p{position:relative;z-index:1}.card p{margin-top:13px;font-size:15px;line-height:1.75}
+    .card-link{position:relative;z-index:1;display:inline-flex;margin-top:22px;color:var(--gold-2);font-weight:850;font-size:14px}
+
+    .dark-panel{border:1px solid rgba(255,255,255,.11);border-radius:42px;background:
+      radial-gradient(circle at 10% 0%,rgba(216,174,98,.18),transparent 34%),
+      linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+      box-shadow:var(--shadow);overflow:hidden;position:relative;
+    }
+    .why{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+    .why-copy{padding:54px}.why-list{display:grid;gap:14px;margin-top:28px}
+    .why-item{display:flex;gap:15px;padding:16px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}
+    .check{flex:0 0 28px;width:28px;height:28px;border-radius:999px;background:rgba(216,174,98,.15);color:var(--gold-2);display:grid;place-items:center;font-weight:900}
+    .why-item strong{display:block;color:#fff;margin-bottom:2px}.why-item span{color:var(--muted);font-size:14px;line-height:1.55}
+    .why-visual{min-height:620px;background:
+      linear-gradient(180deg,rgba(5,10,18,.05),rgba(5,10,18,.85)),
+      radial-gradient(circle at 50% 40%,rgba(216,174,98,.22),transparent 32%),
+      linear-gradient(135deg,#172943,#060d18);position:relative;overflow:hidden}
+    .map-rings{position:absolute;inset:11%;border-radius:50%;border:1px solid rgba(216,174,98,.18)}
+    .map-rings:before,.map-rings:after{content:"";position:absolute;inset:14%;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+    .map-rings:after{inset:28%;border-color:rgba(216,174,98,.28)}
+    .pin{position:absolute;width:16px;height:16px;background:var(--gold-2);border-radius:50%;box-shadow:0 0 0 10px rgba(216,174,98,.14),0 0 45px rgba(216,174,98,.65)}
+    .pin.one{left:56%;top:42%}.pin.two{left:32%;top:54%;animation:pulse 2.5s infinite}.pin.three{left:64%;top:66%;animation:pulse 3s infinite}.pin.four{left:42%;top:30%;animation:pulse 3.4s infinite}
+    @keyframes pulse{50%{box-shadow:0 0 0 18px rgba(216,174,98,0),0 0 45px rgba(216,174,98,.65)}}
+    .route-line{position:absolute;left:28%;top:32%;width:48%;height:42%;border:2px dashed rgba(216,174,98,.34);border-left:0;border-bottom:0;border-radius:0 100% 0 0;transform:rotate(12deg)}
+    .service-strip{position:absolute;left:28px;right:28px;bottom:28px;display:grid;gap:10px}
+    .strip-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(5,10,18,.64);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(20px)}
+    .strip-item b{font-size:14px}.strip-item span{font-size:12px;color:var(--gold-2);font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+    .step{padding:30px;border-radius:var(--radius);background:#f7fbff;color:#07111f;min-height:230px;position:relative;overflow:hidden}
+    .step:after{content:"";position:absolute;right:-70px;top:-70px;width:190px;height:190px;border-radius:50%;background:rgba(216,174,98,.22)}
+    .step-num{font-size:14px;color:#7e5d26;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.step h3{margin-top:18px}.step p{color:#4b5b6d;margin-top:12px;font-size:15px}.step:nth-child(2){background:#eaf0f8}.step:nth-child(3){background:linear-gradient(135deg,var(--gold-2),var(--gold))}
+
+    .contact-wrap{display:grid;grid-template-columns:.83fr 1.17fr;gap:22px;align-items:stretch}
+    .contact-info{padding:42px;border-radius:36px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.1)}
+    .contact-info .lead{font-size:17px}.contact-methods{display:grid;gap:13px;margin-top:30px}
+    .method{display:flex;gap:14px;align-items:center;padding:16px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09)}
+    .method .m-icon{width:42px;height:42px;border-radius:15px;background:rgba(216,174,98,.12);color:var(--gold-2);display:grid;place-items:center;flex:0 0 42px}.method strong{display:block;color:#fff}.method span{display:block;color:var(--muted);font-size:14px;margin-top:1px}
+    .form-card{padding:34px;border-radius:36px;background:#f8fbff;color:#07111f;box-shadow:var(--shadow)}
+    .form-title{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:24px}.form-title h3{font-size:30px}.form-title p{color:#5d6b7d;font-size:14px;line-height:1.6;margin-top:8px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:8px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:850;color:#223047}input,textarea,select{width:100%;border:1px solid #dbe4ef;border-radius:16px;background:#fff;color:#07111f;padding:14px 15px;outline:none;transition:.25s ease}textarea{min-height:116px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(216,174,98,.13)}.form-note{font-size:13px;color:#66768a;margin-top:14px;line-height:1.6}.form-card .btn{width:100%;margin-top:18px;border:0}
+
+    .cta-band{padding:56px;border-radius:42px;background:
+      linear-gradient(90deg,rgba(5,10,18,.72),rgba(5,10,18,.35)),
+      radial-gradient(circle at 82% 34%,rgba(216,174,98,.35),transparent 30%),
+      linear-gradient(135deg,#172943,#07111f);border:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow)}
+    .cta-band h2{font-size:clamp(30px,4vw,52px)}.cta-band p{margin-top:14px;max-width:650px}
+
+    .footer{padding:42px 0;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.16)}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:14px}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.footer-links a{transition:.25s ease}.footer-links a:hover{color:var(--gold-2)}
+
+    .floating-cta{position:fixed;right:20px;bottom:20px;z-index:48;display:flex;flex-direction:column;gap:10px}.float-btn{width:58px;height:58px;border-radius:20px;display:grid;place-items:center;color:#08111f;background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 18px 55px rgba(0,0,0,.34);transition:.25s ease}.float-btn:hover{transform:translateY(-3px)}.float-btn.call{background:#f6fbff;color:#07111f}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media (max-width:1040px){
+      .hero-grid,.split,.why,.contact-wrap{grid-template-columns:1fr}.hero{padding-top:132px}.hero-visual{min-height:500px;order:-1}.hero-copy{order:1}.why-visual{min-height:520px}.cards{grid-template-columns:repeat(2,1fr)}.cta-band{grid-template-columns:1fr}.nav-links,.nav-actions{display:none}.menu-btn{display:block}.nav-links{position:fixed;top:0;left:0;right:0;height:100svh;background:rgba(5,10,18,.96);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:90px 34px;gap:22px;transform:translateX(100%);transition:.35s ease;font-size:30px;font-weight:900}.menu-open .nav-links{transform:translateX(0)}.nav-links a{opacity:1}.nav .mobile-cta{display:inline-flex;margin-top:12px;font-size:16px}.nav-links .mobile-cta{min-height:54px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#111827;border-radius:999px;padding:0 24px;align-items:center;justify-content:center}
+    }
+    @media (min-width:1041px){.nav-links .mobile-cta{display:none}}
+    @media (max-width:760px){
+      :root{--nav-h:76px}.container,.nav-inner{width:min(100% - 28px,var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding:112px 0 68px}.hero-tags{gap:8px}.tag{font-size:11px;padding:8px 10px}.hero-cta{display:grid;grid-template-columns:1fr;gap:12px}.btn{width:100%}.trust-row{grid-template-columns:1fr;margin-top:26px}.hero-visual{min-height:360px}.car-card{inset:6px 0 0 0;border-radius:30px;transform:none}.glass-pill{right:14px;top:14px;width:74%;padding:14px;border-radius:20px}.route-card{left:12px;right:12px;width:auto;bottom:14px;padding:15px;border-radius:20px}.car-svg{left:-18%;right:-18%;bottom:74px;max-width:136%}.coast-line{bottom:95px}.road{height:120px}.cards,.steps{grid-template-columns:1fr}.card{min-height:auto;padding:24px}.dark-panel{border-radius:30px}.why-copy{padding:28px}.why-visual{min-height:440px}.service-strip{left:14px;right:14px;bottom:14px}.strip-item{padding:13px 14px}.form-card,.contact-info{border-radius:28px;padding:24px}.form-grid{grid-template-columns:1fr}.form-title{display:block}.form-title h3{font-size:26px}.cta-band{padding:30px;border-radius:30px}.footer-inner{flex-direction:column;align-items:flex-start}.floating-cta{right:14px;bottom:14px}.float-btn{width:54px;height:54px;border-radius:18px}.brand span{font-size:18px}.brand-mark{width:42px;height:42px;border-radius:15px}.nav-links{font-size:25px}.marquee-track{font-size:12px;gap:22px}.marquee-track span{gap:22px}
+    }
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#pocetna" aria-label="STIT TAXI početna">
+        <span class="brand-mark">S</span>
+        <span>STIT TAXI<small>Njivice • Krk</small></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Glavna navigacija">
+        <a href="#pocetna">Početna</a>
+        <a href="#usluge">Usluge</a>
+        <a href="#zasto">Zašto STIT</a>
+        <a href="#rezervacija">Kontakt</a>
+        <a class="mobile-cta" href="tel:+385959046777">Nazovi odmah</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="#rezervacija">Pošalji upit</a>
+        <a class="btn btn-primary" href="tel:+385959046777">Nazovi odmah</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Otvori izbornik" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="pocetna">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="hero-tags">
+            <span class="tag">Njivice</span>
+            <span class="tag">Otok Krk</span>
+            <span class="tag">Taxi & transferi</span>
+          </div>
+          <h1>Pouzdan taxi i privatni prijevoz na <span class="gold">otoku Krku</span></h1>
+          <p class="lead">Profesionalan prijevoz iz Njivica za lokalne vožnje, transfere, turiste, apartmane, hotele i zračne luke — uz brz dogovor i jednostavan kontakt.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="tel:+385959046777">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8 9.72a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92Z"/></svg>
+              Nazovi odmah
+            </a>
+            <a class="btn btn-secondary" href="#rezervacija">
+              Pošalji upit
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="trust-row">
+            <div class="trust-item"><strong>24/7*</strong><span>Vožnje po dogovoru</span></div>
+            <div class="trust-item"><strong>Krk</strong><span>Lokalno područje</span></div>
+            <div class="trust-item"><strong>095</strong><span>Brz kontakt</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Premium taxi vizual">
+          <div class="car-card">
+            <div class="glass-pill"><strong>Private transfer osjećaj</strong><span>Uredan nastup, sigurna vožnja i jednostavan dogovor za putnike, goste apartmana i turiste.</span></div>
+            <div class="coast-line"></div>
+            <div class="road"></div>
+            <svg class="car-svg" viewBox="0 0 900 320" aria-hidden="true">
+              <defs>
+                <linearGradient id="carBody" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset=".42" stop-color="#c9d4e4"/><stop offset="1" stop-color="#eef4fb"/></linearGradient>
+                <linearGradient id="window" x1="0" x2="1"><stop offset="0" stop-color="#1e3a5b"/><stop offset="1" stop-color="#08111f"/></linearGradient>
+                <linearGradient id="goldLine" x1="0" x2="1"><stop offset="0" stop-color="#f1d59a"/><stop offset="1" stop-color="#d8ae62"/></linearGradient>
+              </defs>
+              <path d="M126 200c14-52 55-78 118-83l110-10c50-68 94-91 170-91h83c51 0 91 25 139 88l43 9c55 12 82 46 88 87l-29 42H154l-28-42Z" fill="url(#carBody)"/>
+              <path d="M375 115c34-46 67-62 120-62h91c38 0 67 18 99 62H375Z" fill="url(#window)" opacity=".95"/>
+              <path d="M399 105c24-31 48-43 86-43h19v43H399Z" fill="#2c5279" opacity=".55"/>
+              <path d="M528 62h49c31 0 53 13 78 43H528V62Z" fill="#102640" opacity=".88"/>
+              <path d="M193 207h595" stroke="url(#goldLine)" stroke-width="8" stroke-linecap="round"/>
+              <path d="M707 147h98c18 0 34 13 38 30l5 22h-85c-26 0-49-14-61-37l5-15Z" fill="#f1d59a" opacity=".68"/>
+              <path d="M132 197h77c19 0 34-12 40-30l4-14h-58c-28 0-52 18-61 44Z" fill="#f1d59a" opacity=".45"/>
+              <circle cx="276" cy="232" r="55" fill="#070d17"/><circle cx="276" cy="232" r="29" fill="#dce6f5"/><circle cx="276" cy="232" r="12" fill="#8897aa"/>
+              <circle cx="704" cy="232" r="55" fill="#070d17"/><circle cx="704" cy="232" r="29" fill="#dce6f5"/><circle cx="704" cy="232" r="12" fill="#8897aa"/>
+              <path d="M442 145h55" stroke="#8fa2b8" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div class="route-card"><div class="mini">Primjer relacije</div><strong>Njivice → Zračna luka / Krk</strong><p>Transferi i lokalne vožnje po prethodnom dogovoru.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Lokalni taxi prijevoz</span><span>Transferi po dogovoru</span><span>Turisti i apartmani</span><span>Njivice i otok Krk</span><span>Brz kontakt</span>
+        <span>Lokalni taxi prijevoz</span><span>Transferi po dogovoru</span><span>Turisti i apartmani</span><span>Njivice i otok Krk</span><span>Brz kontakt</span>
+      </div>
+    </div>
+
+    <section class="section" id="usluge">
+      <div class="container">
+        <div class="split section-head reveal">
+          <div>
+            <span class="eyebrow">Usluge</span>
+            <h2>Taxi i transfer rješenja za svaki tip vožnje.</h2>
+          </div>
+          <p>Od kratke lokalne vožnje do dogovorenog transfera za goste apartmana, STIT TAXI je zamišljen kao jednostavno, brzo i profesionalno rješenje za prijevoz na otoku Krku.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17h10"/><path d="M5 17h14l-1.6-6.4A3 3 0 0 0 14.5 8h-5A3 3 0 0 0 6.6 10.6L5 17Z"/><path d="M7 17v2"/><path d="M17 17v2"/><path d="M8 13h.01"/><path d="M16 13h.01"/></svg></div>
+            <h3>Lokalni taxi prijevoz</h3>
+            <p>Brze i jednostavne vožnje u Njivicama, okolici i po otoku Krku, za lokalne korisnike i posjetitelje.</p>
+            <a href="#rezervacija" class="card-link">Zatraži vožnju →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16 22 8"/><path d="m6 14-2 6 6-3"/><path d="m14 11 3 9 2-1-1-10"/><path d="M2 16l7 1"/></svg></div>
+            <h3>Airport transfer</h3>
+            <p>Transferi prema zračnim lukama i drugim odredištima po dogovoru, idealno za turiste i goste smještaja.</p>
+            <a href="#rezervacija" class="card-link">Dogovori transfer →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h.01"/><path d="M9 13h.01"/><path d="M9 17h.01"/></svg></div>
+            <h3>Apartmani i hoteli</h3>
+            <p>Prijevoz gostiju apartmana, vila i hotela — praktično za iznajmljivače koji žele bolju uslugu za svoje goste.</p>
+            <a href="#rezervacija" class="card-link">Pošalji upit →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <h3>Međugradske vožnje</h3>
+            <p>Vožnje izvan lokalnog područja po prethodnom dogovoru, uz jasno definiranu relaciju i termin.</p>
+            <a href="#rezervacija" class="card-link">Dogovori relaciju →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
+            <h3>Vožnje po rezervaciji</h3>
+            <p>Planirane vožnje za važne termine, odlazak, povratak ili prijevoz gostiju u točno dogovoreno vrijeme.</p>
+            <a href="#rezervacija" class="card-link">Rezerviraj termin →</a>
+          </article>
+          <article class="card reveal">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <h3>Privatni transfer</h3>
+            <p>Diskretan i profesionalan prijevoz za putnike koji žele urednu, mirnu i pouzdanu uslugu.</p>
+            <a href="#rezervacija" class="card-link">Kontaktiraj nas →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" id="zasto">
+      <div class="container dark-panel why reveal">
+        <div class="why-copy">
+          <span class="eyebrow">Zašto STIT</span>
+          <h2>Jednostavan dogovor, sigurna vožnja i lokalno poznavanje Krka.</h2>
+          <p class="lead">STIT je obrt za prijevoz putnika iz Njivica, usmjeren na urednu i profesionalnu uslugu prijevoza za lokalne korisnike, turiste i goste smještaja.</p>
+          <div class="why-list">
+            <div class="why-item"><div class="check">✓</div><div><strong>Brz kontakt</strong><span>Pozivom ili upitom odmah pokrećete dogovor oko vožnje.</span></div></div>
+            <div class="why-item"><div class="check">✓</div><div><strong>Premium prezentacija usluge</strong><span>Profesionalan nastup koji ulijeva povjerenje turistima i gostima apartmana.</span></div></div>
+            <div class="why-item"><div class="check">✓</div><div><strong>Fleksibilne relacije</strong><span>Lokalne vožnje, transferi i međugradski prijevoz po dogovoru.</span></div></div>
+          </div>
+        </div>
+        <div class="why-visual" aria-hidden="true">
+          <div class="map-rings"></div>
+          <div class="route-line"></div>
+          <div class="pin one"></div><div class="pin two"></div><div class="pin three"></div><div class="pin four"></div>
+          <div class="service-strip">
+            <div class="strip-item"><b>Njivice</b><span>Polazak</span></div>
+            <div class="strip-item"><b>Otok Krk</b><span>Lokalno</span></div>
+            <div class="strip-item"><b>Zračna luka / transfer</b><span>Po dogovoru</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Rezervacija</span>
+          <h2>Kako dogovoriti vožnju?</h2>
+          <p>Stranica je napravljena da korisnik ne mora tražiti informacije — odmah vidi uslugu, broj i jednostavan put do rezervacije.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal"><div class="step-num">Korak 01</div><h3>Pošaljite upit</h3><p>Unesite relaciju, datum, broj putnika i kontakt broj.</p></div>
+          <div class="step reveal"><div class="step-num">Korak 02</div><h3>Dogovorite detalje</h3><p>Vozač potvrđuje dostupnost, vrijeme i okvir dogovorene vožnje.</p></div>
+          <div class="step reveal"><div class="step-num">Korak 03</div><h3>Uživajte u vožnji</h3><p>Siguran, uredan i pouzdan prijevoz na dogovorenu lokaciju.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" id="rezervacija">
+      <div class="container contact-wrap">
+        <div class="contact-info reveal">
+          <span class="eyebrow">Kontakt</span>
+          <h2>Trebate prijevoz? Javite se i dogovorite vožnju.</h2>
+          <p class="lead">Za najbrži dogovor nazovite direktno ili pošaljite upit kroz formu. Forma trenutno otvara WhatsApp poruku s pripremljenim detaljima vožnje.</p>
+          <div class="contact-methods">
+            <a class="method" href="tel:+385959046777"><span class="m-icon">☎</span><span><strong>Telefon</strong><span>095 904 6777</span></span></a>
+            <a class="method" href="https://wa.me/385959046777" target="_blank" rel="noopener"><span class="m-icon">✆</span><span><strong>WhatsApp</strong><span>Pošalji poruku odmah</span></span></a>
+            <div class="method"><span class="m-icon">⌖</span><span><strong>Lokacija</strong><span>Njivice, Ribarska obala 24</span></span></div>
+          </div>
+        </div>
+
+        <form class="form-card reveal" id="rideForm">
+          <div class="form-title">
+            <div>
+              <h3>Pošalji upit za vožnju</h3>
+              <p>Upit se šalje kao pripremljena WhatsApp poruka.</p>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="name">Ime i prezime</label><input id="name" name="name" type="text" placeholder="Vaše ime" required></div>
+            <div class="field"><label for="phone">Broj telefona</label><input id="phone" name="phone" type="tel" placeholder="npr. 095 000 0000" required></div>
+            <div class="field"><label for="date">Datum vožnje</label><input id="date" name="date" type="date"></div>
+            <div class="field"><label for="time">Vrijeme</label><input id="time" name="time" type="time"></div>
+            <div class="field"><label for="passengers">Broj putnika</label><select id="passengers" name="passengers"><option>1 putnik</option><option>2 putnika</option><option>3 putnika</option><option>4 putnika</option><option>5+ putnika</option></select></div>
+            <div class="field"><label for="type">Vrsta vožnje</label><select id="type" name="type"><option>Lokalna taxi vožnja</option><option>Transfer do zračne luke</option><option>Prijevoz gostiju apartmana/hotela</option><option>Međugradska vožnja</option><option>Drugo</option></select></div>
+            <div class="field full"><label for="route">Relacija</label><input id="route" name="route" type="text" placeholder="Odakle i dokle?" required></div>
+            <div class="field full"><label for="message">Dodatna poruka</label><textarea id="message" name="message" placeholder="Napišite dodatne informacije ako ih imate..."></textarea></div>
+          </div>
+          <button class="btn btn-primary" type="submit">Pošalji upit putem WhatsAppa</button>
+          <p class="form-note">*Podaci u demo verziji mogu se naknadno povezati s e-mail formom, Web3Forms sustavom ili drugim rješenjem za primanje upita.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section-tight">
+      <div class="container cta-band reveal">
+        <div>
+          <h2>Profesionalna web stranica koja odmah vodi korisnika prema pozivu.</h2>
+          <p>Landing page je idealan za ograničen budžet jer sadrži sve najvažnije: usluge, povjerenje, kontakt gumb, WhatsApp i upit formu.</p>
+        </div>
+        <a class="btn btn-primary" href="tel:+385959046777">Nazovi 095 904 6777</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> STIT TAXI. Sva prava pridržana.</div>
+      <div class="footer-links"><a href="#pocetna">Početna</a><a href="#usluge">Usluge</a><a href="#rezervacija">Kontakt</a></div>
+    </div>
+  </footer>
+
+  <div class="floating-cta" aria-label="Brzi kontakt">
+    <a class="float-btn call" href="tel:+385959046777" aria-label="Nazovi STIT TAXI">☎</a>
+    <a class="float-btn" href="https://wa.me/385959046777" target="_blank" rel="noopener" aria-label="WhatsApp STIT TAXI">✆</a>
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    menuBtn.addEventListener('click', () => {
+      document.body.classList.toggle('menu-open');
+      menuBtn.setAttribute('aria-expanded', document.body.classList.contains('menu-open'));
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.body.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    document.getElementById('rideForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(this);
+      const text = `Pozdrav, želim poslati upit za STIT TAXI vožnju.%0A%0A` +
+        `Ime: ${encodeURIComponent(data.get('name') || '')}%0A` +
+        `Telefon: ${encodeURIComponent(data.get('phone') || '')}%0A` +
+        `Datum: ${encodeURIComponent(data.get('date') || 'Po dogovoru')}%0A` +
+        `Vrijeme: ${encodeURIComponent(data.get('time') || 'Po dogovoru')}%0A` +
+        `Broj putnika: ${encodeURIComponent(data.get('passengers') || '')}%0A` +
+        `Vrsta vožnje: ${encodeURIComponent(data.get('type') || '')}%0A` +
+        `Relacija: ${encodeURIComponent(data.get('route') || '')}%0A` +
+        `Poruka: ${encodeURIComponent(data.get('message') || '-')}`;
+      window.open(`https://wa.me/385959046777?text=${text}`, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
