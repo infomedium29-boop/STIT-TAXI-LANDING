@@ -88,7 +88,7 @@
     }
     .nav.scrolled{height:74px;background:rgba(5,10,18,.86);box-shadow:0 15px 60px rgba(0,0,0,.28)}
     .nav-inner{width:min(var(--max),calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
-    .brand{display:flex;align-items:center;gap:0;font-weight:950;letter-spacing:-.04em;font-size:20px;z-index:52}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-.04em;font-size:20px;z-index:52}
     .brand-mark{
       width:46px;height:46px;border-radius:16px;display:grid;place-items:center;color:#101010;font-weight:950;
       background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 12px 40px rgba(216,174,98,.25);
@@ -98,38 +98,6 @@
     .nav-links a{opacity:.82;transition:.25s ease}
     .nav-links a:hover{opacity:1;color:var(--gold-2)}
     .nav-actions{display:flex;align-items:center;gap:12px}
-
-    .lang-switch{
-      display:inline-flex;
-      align-items:center;
-      gap:4px;
-      padding:4px;
-      border:1px solid rgba(255,255,255,.13);
-      border-radius:999px;
-      background:rgba(255,255,255,.055);
-      backdrop-filter:blur(16px);
-    }
-    .lang-btn{
-      border:0;
-      min-width:42px;
-      height:34px;
-      padding:0 10px;
-      border-radius:999px;
-      background:transparent;
-      color:#d7e1ee;
-      font-weight:900;
-      font-size:12px;
-      cursor:pointer;
-      transition:.24s ease;
-    }
-    .lang-btn.active{
-      background:linear-gradient(135deg,var(--gold-2),var(--gold));
-      color:#101827;
-      box-shadow:0 10px 24px rgba(216,174,98,.18);
-    }
-    .nav-links .mobile-lang{display:none}
-    .trust-contact strong{font-size:15px;letter-spacing:.08em;text-transform:uppercase}
-    .trust-contact span{font-size:14px;color:var(--gold-2);letter-spacing:.02em}
     .nav-actions .btn{min-height:46px;padding:0 18px;font-size:14px}
     .menu-btn{display:none;width:48px;height:48px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;z-index:52}
     .menu-btn span{display:block;width:20px;height:2px;background:#fff;margin:5px auto;border-radius:20px;transition:.25s ease}
@@ -168,10 +136,12 @@
       linear-gradient(135deg,rgba(255,255,255,.18),transparent 34%),
       radial-gradient(circle at 20% 80%,rgba(75,130,190,.22),transparent 32%);
     }
+    .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.72) saturate(1.04) contrast(1.08);transform:scale(1.01)}
+    .car-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,18,.22),transparent 45%,rgba(5,10,18,.08));pointer-events:none;z-index:1}
+    .glass-pill,.route-card{z-index:2}
     .coast-line{position:absolute;left:34px;right:34px;bottom:112px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
     .road{position:absolute;left:-12%;right:-12%;bottom:0;height:150px;background:linear-gradient(180deg,rgba(10,19,32,.2),#02060c);transform:skewY(-4deg);transform-origin:right bottom}
     .road:before{content:"";position:absolute;left:18%;right:10%;top:44%;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.45) 0 50px,transparent 50px 80px);opacity:.52}
-    .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.72) saturate(1.02) contrast(1.06)}
     .car-svg{position:absolute;left:4%;right:2%;bottom:76px;filter:drop-shadow(0 30px 35px rgba(0,0,0,.58));animation:floatCar 6s ease-in-out infinite}
     @keyframes floatCar{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
     .glass-pill{position:absolute;right:24px;top:24px;width:min(310px,70%);padding:18px;border-radius:24px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(20px);box-shadow:0 18px 60px rgba(0,0,0,.25)}
@@ -247,32 +217,28 @@
     .footer{padding:42px 0;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.16)}
     .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:14px}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.footer-links a{transition:.25s ease}.footer-links a:hover{color:var(--gold-2)}
 
-    .floating-cta{position:fixed;right:20px;bottom:20px;z-index:48;display:flex;flex-direction:column;gap:10px}
-    .float-btn{width:58px;height:58px;border-radius:20px;display:grid;place-items:center;color:#08111f;background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 18px 55px rgba(0,0,0,.34);transition:.25s ease;border:1px solid rgba(255,255,255,.18)}
-    .float-btn:hover{transform:translateY(-3px)}
-    .float-btn svg{width:24px;height:24px;display:block}
-    .float-btn.call{background:#f6fbff;color:#07111f}
-    .float-btn.whatsapp{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#07111f}
-    .float-btn.viber{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff}
+    .floating-cta{position:fixed;right:20px;bottom:20px;z-index:48;display:flex;flex-direction:column;gap:12px}.float-btn{width:70px;height:70px;border-radius:24px;display:grid;place-items:center;color:#08111f;background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 20px 58px rgba(0,0,0,.36);transition:.25s ease}.float-btn:hover{transform:translateY(-3px) scale(1.02)}.float-btn.call{background:#f6fbff;color:#07111f}.float-btn.viber{background:linear-gradient(135deg,#8f5cff,#6d3bd1);color:#fff}.float-btn svg{width:30px;height:30px}.float-btn.viber svg{width:32px;height:32px}.m-icon svg{width:21px;height:21px}.m-icon.viber{background:rgba(125,82,230,.14);color:#9d7cff}.m-icon.viber svg{width:22px;height:22px}
 
     .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s ease}.reveal.visible{opacity:1;transform:translateY(0)}
 
     @media (max-width:1040px){
-      .hero-grid,.split,.why,.contact-wrap{grid-template-columns:1fr}.hero{padding-top:132px}.hero-visual{min-height:500px;order:-1}.hero-copy{order:1}.why-visual{min-height:520px}.cards{grid-template-columns:repeat(2,1fr)}.cta-band{grid-template-columns:1fr}.nav-links,.nav-actions{display:none}.menu-btn{display:block}.nav-links{position:fixed;top:0;left:0;right:0;height:100svh;background:rgba(5,10,18,.96);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:90px 34px;gap:22px;transform:translateX(100%);transition:.35s ease;font-size:30px;font-weight:900}.menu-open .nav-links{transform:translateX(0)}.nav-links a{opacity:1}.nav .mobile-cta{display:inline-flex;margin-top:12px;font-size:16px}.nav-links .mobile-cta{min-height:54px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#111827;border-radius:999px;padding:0 24px;align-items:center;justify-content:center}.nav-links .mobile-lang{display:flex;margin-top:8px}.nav-links .mobile-lang .lang-btn{min-width:58px;height:42px;font-size:14px}
+      .hero-grid,.split,.why,.contact-wrap{grid-template-columns:1fr}.hero{padding-top:132px}.hero-visual{min-height:500px;order:-1}.hero-copy{order:1}.why-visual{min-height:520px}.cards{grid-template-columns:repeat(2,1fr)}.cta-band{grid-template-columns:1fr}.nav-links,.nav-actions{display:none}.menu-btn{display:block}.nav-links{position:fixed;top:0;left:0;right:0;height:100svh;background:rgba(5,10,18,.96);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:90px 34px;gap:22px;transform:translateX(100%);transition:.35s ease;font-size:30px;font-weight:900}.menu-open .nav-links{transform:translateX(0)}.nav-links a{opacity:1}.nav .mobile-cta{display:inline-flex;margin-top:12px;font-size:16px}.nav-links .mobile-cta{min-height:54px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#111827;border-radius:999px;padding:0 24px;align-items:center;justify-content:center}
     }
     @media (min-width:1041px){.nav-links .mobile-cta{display:none}}
     @media (max-width:760px){
-      :root{--nav-h:76px}.container,.nav-inner{width:min(100% - 28px,var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding:112px 0 68px}.hero-tags{gap:8px}.tag{font-size:11px;padding:8px 10px}.hero-cta{display:grid;grid-template-columns:1fr;gap:12px}.btn{width:100%}.trust-row{grid-template-columns:1fr;margin-top:26px}.hero-visual{min-height:360px}.car-card{inset:6px 0 0 0;border-radius:30px;transform:none}.glass-pill{right:14px;top:14px;width:74%;padding:14px;border-radius:20px}.route-card{left:12px;right:12px;width:auto;bottom:14px;padding:15px;border-radius:20px}.car-svg{left:-18%;right:-18%;bottom:74px;max-width:136%}.coast-line{bottom:95px}.road{height:120px}.cards,.steps{grid-template-columns:1fr}.card{min-height:auto;padding:24px}.dark-panel{border-radius:30px}.why-copy{padding:28px}.why-visual{min-height:440px}.service-strip{left:14px;right:14px;bottom:14px}.strip-item{padding:13px 14px}.form-card,.contact-info{border-radius:28px;padding:24px}.form-grid{grid-template-columns:1fr}.form-title{display:block}.form-title h3{font-size:26px}.cta-band{padding:30px;border-radius:30px}.footer-inner{flex-direction:column;align-items:flex-start}.floating-cta{right:14px;bottom:14px}.float-btn{width:54px;height:54px;border-radius:18px}.float-btn svg{width:23px;height:23px}.brand span{font-size:18px}.brand-mark{width:42px;height:42px;border-radius:15px}.nav-links{font-size:25px}.marquee-track{font-size:12px;gap:22px}.marquee-track span{gap:22px}
+      :root{--nav-h:76px}.container,.nav-inner{width:min(100% - 28px,var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding:112px 0 68px}.hero-tags{gap:8px}.tag{font-size:11px;padding:8px 10px}.hero-cta{display:grid;grid-template-columns:1fr;gap:12px}.btn{width:100%}.trust-row{grid-template-columns:1fr;margin-top:26px}.hero-visual{min-height:360px}.car-card{inset:6px 0 0 0;border-radius:30px;transform:none}.hero-photo{object-position:center center}.glass-pill{right:14px;top:14px;width:74%;padding:14px;border-radius:20px}.route-card{left:12px;right:12px;width:auto;bottom:14px;padding:15px;border-radius:20px}.car-svg{left:-18%;right:-18%;bottom:74px;max-width:136%}.coast-line{bottom:95px}.road{height:120px}.cards,.steps{grid-template-columns:1fr}.card{min-height:auto;padding:24px}.dark-panel{border-radius:30px}.why-copy{padding:28px}.why-visual{min-height:440px}.service-strip{left:14px;right:14px;bottom:14px}.strip-item{padding:13px 14px}.form-card,.contact-info{border-radius:28px;padding:24px}.form-grid{grid-template-columns:1fr}.form-title{display:block}.form-title h3{font-size:26px}.cta-band{padding:30px;border-radius:30px}.footer-inner{flex-direction:column;align-items:flex-start}.floating-cta{right:14px;bottom:14px;gap:10px}.float-btn{width:62px;height:62px;border-radius:20px}.float-btn svg{width:28px;height:28px}.float-btn.viber svg{width:30px;height:30px}.brand span{font-size:18px}.brand-mark{width:42px;height:42px;border-radius:15px}.nav-links{font-size:25px}.marquee-track{font-size:12px;gap:22px}.marquee-track span{gap:22px}
     }
     @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
+  <!-- STIT LANDING HERO PHOTO FIX v2 -->
   <div class="page-noise" aria-hidden="true"></div>
 
   <header class="nav" id="nav">
     <div class="nav-inner">
       <a class="brand" href="#pocetna" aria-label="STIT TAXI početna">
+        <span class="brand-mark">S</span>
         <span>STIT TAXI<small>Njivice • Krk</small></span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Glavna navigacija">
@@ -280,17 +246,9 @@
         <a href="#usluge">Usluge</a>
         <a href="#zasto">Zašto STIT</a>
         <a href="#rezervacija">Kontakt</a>
-        <div class="lang-switch mobile-lang" aria-label="Odabir jezika">
-          <button class="lang-btn active" type="button" data-lang-btn="hr">HR</button>
-          <button class="lang-btn" type="button" data-lang-btn="en">EN</button>
-        </div>
         <a class="mobile-cta" href="tel:+385959046777">Nazovi odmah</a>
       </nav>
       <div class="nav-actions">
-        <div class="lang-switch" aria-label="Odabir jezika">
-          <button class="lang-btn active" type="button" data-lang-btn="hr">HR</button>
-          <button class="lang-btn" type="button" data-lang-btn="en">EN</button>
-        </div>
         <a class="btn btn-secondary" href="#rezervacija">Pošalji upit</a>
         <a class="btn btn-primary" href="tel:+385959046777">Nazovi odmah</a>
       </div>
@@ -324,13 +282,13 @@
           <div class="trust-row">
             <div class="trust-item"><strong>24/7*</strong><span>Vožnje po dogovoru</span></div>
             <div class="trust-item"><strong>Krk</strong><span>Lokalno područje</span></div>
-            <div class="trust-item trust-contact"><strong>BRZI KONTAKT</strong><span>+385 95 904 6777</span></div>
+            <div class="trust-item"><strong>095</strong><span>Brz kontakt</span></div>
           </div>
         </div>
 
         <div class="hero-visual reveal" aria-label="Premium taxi vizual">
           <div class="car-card hero-image-card">
-            <img class="hero-photo" src="assets/images/landing-hero-taxi.avif?v=renault-stit-lang-2" alt="Renault vozilo STIT TAXI za prijevoz putnika na otoku Krku" loading="eager" fetchpriority="high" decoding="async" />
+            <img class="hero-photo" src="assets/images/landing-hero-taxi.avif?v=renault-stit-2" alt="Renault vozilo STIT TAXI za prijevoz putnika na otoku Krku" loading="eager" fetchpriority="high" decoding="async" />
             <div class="glass-pill"><strong>Private transfer osjećaj</strong><span>Uredan nastup, sigurna vožnja i jednostavan dogovor za putnike, goste apartmana i turiste.</span></div>
             <div class="route-card"><div class="mini">Primjer relacije</div><strong>Njivice → Zračna luka / Krk</strong><p>Transferi i lokalne vožnje po prethodnom dogovoru.</p></div>
           </div>
@@ -426,6 +384,7 @@
         <div class="section-head reveal">
           <span class="eyebrow">Rezervacija</span>
           <h2>Kako dogovoriti vožnju?</h2>
+          <p>Stranica je napravljena da korisnik ne mora tražiti informacije — odmah vidi uslugu, broj i jednostavan put do rezervacije.</p>
         </div>
         <div class="steps">
           <div class="step reveal"><div class="step-num">Korak 01</div><h3>Pošaljite upit</h3><p>Unesite relaciju, datum, broj putnika i kontakt broj.</p></div>
@@ -442,9 +401,9 @@
           <h2>Trebate prijevoz? Javite se i dogovorite vožnju.</h2>
           <p class="lead">Za najbrži dogovor nazovite direktno, pošaljite upit kroz formu ili se javite putem WhatsAppa i Vibera.</p>
           <div class="contact-methods">
-            <a class="method" href="tel:+385959046777"><span class="m-icon">☎</span><span><strong>Telefon</strong><span>095 904 6777</span></span></a>
-            <a class="method" href="https://wa.me/385959046777" target="_blank" rel="noopener"><span class="m-icon">✆</span><span><strong>WhatsApp</strong><span>Pošalji poruku odmah</span></span></a>
-            <a class="method" href="viber://chat?number=%2B385959046777"><span class="m-icon">☏</span><span><strong>Viber</strong><span>Poziv ili poruka preko Vibera</span></span></a>
+            <a class="method" href="tel:+385959046777"><span class="m-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.56 0 1 .44 1 1V20c0 .56-.44 1-1 1C10.07 21 3 13.93 3 5c0-.56.44-1 1-1h3.5c.56 0 1 .44 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg></span><span><strong>Telefon</strong><span>095 904 6777</span></span></a>
+            <a class="method" href="https://wa.me/385959046777" target="_blank" rel="noopener"><span class="m-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.15 1.59 5.96L0 24l6.29-1.65a11.86 11.86 0 0 0 5.78 1.47h.01c6.57 0 11.92-5.35 11.92-11.92a11.84 11.84 0 0 0-3.48-8.42Zm-8.45 18.33h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.9 9.9 0 0 1-1.52-5.27c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 0 1 2.9 7c0 5.48-4.45 9.93-9.93 9.93Zm5.44-7.4c-.3-.15-1.77-.88-2.05-.98-.27-.1-.47-.15-.67.15-.2.3-.76.98-.94 1.18-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.47-.88-.78-1.48-1.75-1.66-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.53.08-.8.38-.28.3-1.06 1.04-1.06 2.54 0 1.5 1.09 2.94 1.24 3.14.15.2 2.14 3.27 5.18 4.58.72.31 1.29.5 1.73.65.73.23 1.39.2 1.91.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35Z"/></svg></span><span><strong>WhatsApp</strong><span>Pošalji poruku odmah</span></span></a>
+            <a class="method" href="viber://chat?number=%2B385959046777"><span class="m-icon viber"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.02 2C6.49 2 2 5.98 2 10.87c0 2.8 1.49 5.3 3.81 6.92v2.73c0 .5.57.79.98.5l2.8-1.98c.78.18 1.6.28 2.43.28 5.53 0 10.02-3.98 10.02-8.88C22.04 5.98 17.55 2 12.02 2Zm4.84 12.8c-.27.74-1.35 1.38-2.02 1.48-.54.08-1.23.12-3.56-.85-2.98-1.24-4.9-4.27-5.05-4.47-.14-.2-1.2-1.59-1.2-3.03s.76-2.16 1.03-2.45c.27-.3.6-.37.8-.37h.58c.18 0 .45.07.68.52.27.55.9 2.14.98 2.3.08.16.13.36.03.57-.1.2-.16.33-.31.51-.16.18-.33.4-.47.54-.16.16-.32.33-.14.65.18.32.8 1.31 1.72 2.12 1.18 1.05 2.17 1.38 2.5 1.54.32.16.52.13.71-.08.2-.22.82-.95 1.04-1.28.22-.33.44-.27.74-.16.3.11 1.9.9 2.23 1.06.33.16.55.24.63.37.08.13.08.77-.19 1.51Z"/></svg></span><span><strong>Viber</strong><span>Poziv ili poruka preko Vibera</span></span></a>
             <div class="method"><span class="m-icon">⌖</span><span><strong>Lokacija</strong><span>Njivice, Ribarska obala 24</span></span></div>
           </div>
         </div>
@@ -470,15 +429,6 @@
         </form>
       </div>
     </section>
-
-    <section class="section-tight">
-      <div class="container cta-band reveal">
-        <div>
-          <h2>Profesionalna web stranica koja odmah vodi korisnika prema pozivu.</h2>
-        </div>
-        <a class="btn btn-primary" href="tel:+385959046777">Nazovi 095 904 6777</a>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -489,189 +439,12 @@
   </footer>
 
   <div class="floating-cta" aria-label="Brzi kontakt">
-    <a class="float-btn call" href="tel:+385959046777" aria-label="Nazovi STIT TAXI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg></a>
+    <a class="float-btn call" href="tel:+385959046777" aria-label="Nazovi STIT TAXI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.56 0 1 .44 1 1V20c0 .56-.44 1-1 1C10.07 21 3 13.93 3 5c0-.56.44-1 1-1h3.5c.56 0 1 .44 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg></a>
     <a class="float-btn whatsapp" href="https://wa.me/385959046777" target="_blank" rel="noopener" aria-label="WhatsApp STIT TAXI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.15 1.59 5.96L0 24l6.29-1.65a11.86 11.86 0 0 0 5.78 1.47h.01c6.57 0 11.92-5.35 11.92-11.92a11.84 11.84 0 0 0-3.48-8.42Zm-8.45 18.33h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.9 9.9 0 0 1-1.52-5.27c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 0 1 2.9 7c0 5.48-4.45 9.93-9.93 9.93Zm5.44-7.4c-.3-.15-1.77-.88-2.05-.98-.27-.1-.47-.15-.67.15-.2.3-.76.98-.94 1.18-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.47-.88-.78-1.48-1.75-1.66-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.53.08-.8.38-.28.3-1.06 1.04-1.06 2.54 0 1.5 1.09 2.94 1.24 3.14.15.2 2.14 3.27 5.18 4.58.72.31 1.29.5 1.73.65.73.23 1.39.2 1.91.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.13-.28-.2-.58-.35Z"/></svg></a>
-    <a class="float-btn viber" href="viber://chat?number=%2B385959046777" aria-label="Viber STIT TAXI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.53-.3-1.08-.58-1.62-.86-.72-.37-1.32-.16-1.74.55l-.38.65c-.2.35-.51.42-.86.25-1.94-.96-3.37-2.39-4.3-4.34-.16-.34-.09-.63.23-.84.23-.15.46-.29.68-.45.66-.47.79-1.04.43-1.75-.26-.52-.53-1.03-.81-1.54-.39-.71-.99-.87-1.72-.52-.59.28-1.12.66-1.49 1.21-.6.9-.72 1.87-.42 2.9.96 3.33 3.02 5.78 6.08 7.37 1.15.6 2.38 1.04 3.72.93 1.18-.1 2.09-.69 2.72-1.69.47-.75.31-1.4-.52-1.87ZM12.26 2.1c4.32.13 7.62 3.34 7.76 7.58.02.46-.28.8-.7.81-.42.02-.74-.29-.76-.75-.13-3.46-2.77-6.04-6.31-6.17-.46-.02-.76-.33-.74-.76.01-.42.35-.73.75-.71Zm.24 3.08c2.63.19 4.52 2.02 4.76 4.62.04.46-.23.82-.65.86-.43.04-.76-.24-.82-.7-.2-1.92-1.45-3.12-3.36-3.31-.46-.05-.74-.38-.7-.81.04-.42.37-.69.77-.66Zm.22 2.93c1.03.14 1.63.77 1.76 1.8.06.45-.2.8-.62.86-.41.06-.74-.2-.82-.64-.06-.34-.22-.49-.56-.55-.43-.07-.69-.41-.63-.82.06-.41.41-.71.87-.65Z"/><path fill="currentColor" d="M20.96 1.94C18.8.6 15.64.02 12 .02 8.36.02 5.2.6 3.04 1.94 1.03 3.19.02 5.36.02 8.27v3.24c0 2.87.96 5 2.88 6.26.46.3.74.79.74 1.34v2.05c0 .8.92 1.25 1.56.77l2.47-1.85c.34-.25.76-.36 1.18-.3 1.01.14 2.07.2 3.15.2 3.64 0 6.8-.58 8.96-1.92 2.01-1.25 3.02-3.42 3.02-6.33V8.27c0-2.91-1.01-5.08-3.02-6.33Zm.82 9.79c0 2.21-.67 3.78-2.02 4.62-1.73 1.07-4.45 1.62-7.76 1.62-1.18 0-2.31-.08-3.36-.25-.96-.15-1.94.1-2.71.67l-.38.29v-.03c0-1.19-.6-2.3-1.6-2.95-1.16-.76-1.73-2.2-1.73-4.19V8.27c0-2.21.67-3.78 2.02-4.62C5.97 2.58 8.69 2.03 12 2.03c3.31 0 6.03.55 7.76 1.62 1.35.84 2.02 2.41 2.02 4.62v3.46Z"/></svg></a>
+    <a class="float-btn viber" href="viber://chat?number=%2B385959046777" aria-label="Viber STIT TAXI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.02 2C6.49 2 2 5.98 2 10.87c0 2.8 1.49 5.3 3.81 6.92v2.73c0 .5.57.79.98.5l2.8-1.98c.78.18 1.6.28 2.43.28 5.53 0 10.02-3.98 10.02-8.88C22.04 5.98 17.55 2 12.02 2Zm4.84 12.8c-.27.74-1.35 1.38-2.02 1.48-.54.08-1.23.12-3.56-.85-2.98-1.24-4.9-4.27-5.05-4.47-.14-.2-1.2-1.59-1.2-3.03s.76-2.16 1.03-2.45c.27-.3.6-.37.8-.37h.58c.18 0 .45.07.68.52.27.55.9 2.14.98 2.3.08.16.13.36.03.57-.1.2-.16.33-.31.51-.16.18-.33.4-.47.54-.16.16-.32.33-.14.65.18.32.8 1.31 1.72 2.12 1.18 1.05 2.17 1.38 2.5 1.54.32.16.52.13.71-.08.2-.22.82-.95 1.04-1.28.22-.33.44-.27.74-.16.3.11 1.9.9 2.23 1.06.33.16.55.24.63.37.08.13.08.77-.19 1.51Z"/></svg></a>
   </div>
 
   <script>
-
-    window.STIT_TRANSLATIONS = {
-      "Početna": "Home",
-      "Usluge": "Services",
-      "Zašto STIT": "Why STIT",
-      "Kontakt": "Contact",
-      "Nazovi odmah": "Call now",
-      "Pošalji upit": "Send inquiry",
-      "Njivice": "Njivice",
-      "Otok Krk": "Island of Krk",
-      "Taxi & transferi": "Taxi & transfers",
-      "Pouzdan taxi i privatni prijevoz na": "Reliable taxi and private transfer on",
-      "Pouzdan taxi i privatni prijevoz na otoku Krku": "Reliable taxi and private transfer on the island of Krk",
-      "otoku Krku": "the island of Krk",
-      "Profesionalan prijevoz iz Njivica za lokalne vožnje, transfere, turiste, apartmane, hotele i zračne luke — uz brz dogovor i jednostavan kontakt.": "Professional transport from Njivice for local rides, transfers, tourists, apartments, hotels and airports — with quick arrangements and simple contact.",
-      "Vožnje po dogovoru": "Rides by arrangement",
-      "Lokalno područje": "Local area",
-      "BRZI KONTAKT": "QUICK CONTACT",
-      "Brz kontakt": "Quick contact",
-      "Private transfer osjećaj": "Private transfer experience",
-      "Uredan nastup, sigurna vožnja i jednostavan dogovor za putnike, goste apartmana i turiste.": "Professional appearance, safe ride and easy arrangements for passengers, apartment guests and tourists.",
-      "Primjer relacije": "Example route",
-      "Njivice → Zračna luka / Krk": "Njivice → Airport / Krk",
-      "Transferi i lokalne vožnje po prethodnom dogovoru.": "Transfers and local rides by prior arrangement.",
-      "Lokalni taxi prijevoz": "Local taxi service",
-      "Transferi po dogovoru": "Transfers by arrangement",
-      "Turisti i apartmani": "Tourists and apartments",
-      "Njivice i otok Krk": "Njivice and island of Krk",
-      "Taxi i transfer rješenja za svaki tip vožnje.": "Taxi and transfer solutions for every type of ride.",
-      "Brze i jednostavne vožnje u Njivicama, okolici i po otoku Krku, za lokalne korisnike i posjetitelje.": "Fast and simple rides in Njivice, the surrounding area and across the island of Krk, for locals and visitors.",
-      "Zatraži vožnju →": "Request a ride →",
-      "Airport transfer": "Airport transfer",
-      "Transferi prema zračnim lukama i drugim odredištima po dogovoru, idealno za turiste i goste smještaja.": "Transfers to airports and other destinations by arrangement, ideal for tourists and accommodation guests.",
-      "Dogovori transfer →": "Arrange transfer →",
-      "Apartmani i hoteli": "Apartments and hotels",
-      "Prijevoz gostiju apartmana, vila i hotela — praktično za iznajmljivače koji žele bolju uslugu za svoje goste.": "Transport for guests of apartments, villas and hotels — practical for hosts who want to offer a better service to their guests.",
-      "Pošalji upit →": "Send inquiry →",
-      "Međugradske vožnje": "Intercity rides",
-      "Vožnje izvan lokalnog područja po prethodnom dogovoru, uz jasno definiranu relaciju i termin.": "Rides outside the local area by prior arrangement, with a clearly defined route and time.",
-      "Dogovori relaciju →": "Arrange route →",
-      "Vožnje po rezervaciji": "Rides by reservation",
-      "Planirane vožnje za važne termine, odlazak, povratak ili prijevoz gostiju u točno dogovoreno vrijeme.": "Scheduled rides for important appointments, departures, returns or guest transport at the agreed time.",
-      "Rezerviraj termin →": "Reserve a time →",
-      "Privatni transfer": "Private transfer",
-      "Diskretan i profesionalan prijevoz za putnike koji žele urednu, mirnu i pouzdanu uslugu.": "Discreet and professional transport for passengers who want a smooth, calm and reliable service.",
-      "Kontaktiraj nas →": "Contact us →",
-      "Jednostavan dogovor, sigurna vožnja i lokalno poznavanje Krka.": "Easy arrangements, safe rides and local knowledge of Krk.",
-      "STIT je obrt za prijevoz putnika iz Njivica, usmjeren na urednu i profesionalnu uslugu prijevoza za lokalne korisnike, turiste i goste smještaja.": "STIT is a passenger transport business from Njivice, focused on a neat and professional transport service for local users, tourists and accommodation guests.",
-      "Pozivom ili upitom odmah pokrećete dogovor oko vožnje.": "A call or inquiry starts the ride arrangement immediately.",
-      "Premium prezentacija usluge": "Premium service presentation",
-      "Profesionalan nastup koji ulijeva povjerenje turistima i gostima apartmana.": "A professional presentation that builds trust with tourists and apartment guests.",
-      "Fleksibilne relacije": "Flexible routes",
-      "Lokalne vožnje, transferi i međugradski prijevoz po dogovoru.": "Local rides, transfers and intercity transport by arrangement.",
-      "Polazak": "Departure",
-      "Lokalno": "Local",
-      "Po dogovoru": "By arrangement",
-      "Rezervacija": "Reservation",
-      "Kako dogovoriti vožnju?": "How to arrange a ride?",
-      "Stranica je napravljena da korisnik ne mora tražiti informacije — odmah vidi uslugu, broj i jednostavan put do rezervacije.": "The page is designed so users do not have to search for information — they immediately see the service, phone number and a simple way to book.",
-      "Pošaljite upit": "Send an inquiry",
-      "Unesite relaciju, datum, broj putnika i kontakt broj.": "Enter the route, date, number of passengers and contact number.",
-      "Dogovorite detalje": "Arrange the details",
-      "Vozač potvrđuje dostupnost, vrijeme i okvir dogovorene vožnje.": "The driver confirms availability, time and ride details.",
-      "Uživajte u vožnji": "Enjoy the ride",
-      "Siguran, uredan i pouzdan prijevoz na dogovorenu lokaciju.": "Safe, neat and reliable transport to the agreed location.",
-      "Trebate prijevoz? Javite se i dogovorite vožnju.": "Need transport? Get in touch and arrange a ride.",
-      "Za najbrži dogovor nazovite direktno, pošaljite upit kroz formu ili se javite putem WhatsAppa i Vibera.": "For the fastest arrangement, call directly, send an inquiry through the form, or contact us via WhatsApp and Viber.",
-      "Telefon": "Phone",
-      "WhatsApp": "WhatsApp",
-      "Pošalji poruku odmah": "Send a message now",
-      "Viber": "Viber",
-      "Poziv ili poruka preko Vibera": "Call or message via Viber",
-      "Lokacija": "Location",
-      "Njivice, Ribarska obala 24": "Njivice, Ribarska obala 24",
-      "Pošalji upit za vožnju": "Send ride inquiry",
-      "Upit se šalje kao pripremljena WhatsApp poruka.": "The inquiry is sent as a prepared WhatsApp message.",
-      "Ime i prezime": "Full name",
-      "Broj telefona": "Phone number",
-      "Datum vožnje": "Ride date",
-      "Vrijeme": "Time",
-      "Broj putnika": "Number of passengers",
-      "1 putnik": "1 passenger",
-      "2 putnika": "2 passengers",
-      "3 putnika": "3 passengers",
-      "4 putnika": "4 passengers",
-      "5+ putnika": "5+ passengers",
-      "Vrsta vožnje": "Ride type",
-      "Lokalna taxi vožnja": "Local taxi ride",
-      "Transfer do zračne luke": "Airport transfer",
-      "Prijevoz gostiju apartmana/hotela": "Transport for apartment/hotel guests",
-      "Međugradska vožnja": "Intercity ride",
-      "Drugo": "Other",
-      "Relacija": "Route",
-      "Dodatna poruka": "Additional message",
-      "Pošalji upit putem WhatsAppa": "Send inquiry via WhatsApp",
-      "*Podaci u demo verziji mogu se naknadno povezati s e-mail formom, Web3Forms sustavom ili drugim rješenjem za primanje upita.": "*In the demo version, the data can later be connected to an email form, Web3Forms or another inquiry receiving solution.",
-      "Profesionalna web stranica koja odmah vodi korisnika prema pozivu.": "A professional website that immediately guides the user toward a call.",
-      "Landing page je idealan za ograničen budžet jer sadrži sve najvažnije: usluge, povjerenje, kontakt gumb, WhatsApp, Viber i upit formu.": "A landing page is ideal for a limited budget because it includes the essentials: services, trust, contact button, WhatsApp, Viber and an inquiry form.",
-      "Nazovi 095 904 6777": "Call 095 904 6777",
-      "Vaše ime": "Your name",
-      "npr. 095 000 0000": "e.g. 095 000 0000",
-      "Odakle i dokle?": "From where to where?",
-      "Napišite dodatne informacije ako ih imate...": "Write additional information if you have any...",
-      "Otvori izbornik": "Open menu",
-      "Odabir jezika": "Language selection"
-};
-    window.STIT_LANG = localStorage.getItem('stitLang') || 'hr';
-
-    const originalTextNodes = new WeakMap();
-    const originalPlaceholders = new WeakMap();
-
-    function applyLanguage(lang){
-      window.STIT_LANG = lang;
-      localStorage.setItem('stitLang', lang);
-      document.documentElement.lang = lang;
-
-      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-        acceptNode(node){
-          const parent = node.parentElement;
-          if (!parent) return NodeFilter.FILTER_REJECT;
-          if (['SCRIPT','STYLE','SVG','PATH'].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
-          if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-          return NodeFilter.FILTER_ACCEPT;
-        }
-      });
-
-      let node;
-      while (node = walker.nextNode()) {
-        const raw = node.nodeValue;
-        const current = raw.trim();
-        let saved = originalTextNodes.get(node);
-        if (!saved && window.STIT_TRANSLATIONS[current]) {
-          saved = {
-            text: current,
-            leading: raw.match(/^\s*/)[0],
-            trailing: raw.match(/\s*$/)[0]
-          };
-          originalTextNodes.set(node, saved);
-        }
-        if (saved) {
-          node.nodeValue = saved.leading + (lang === 'hr' ? saved.text : window.STIT_TRANSLATIONS[saved.text]) + saved.trailing;
-        }
-      }
-
-      document.querySelectorAll('[placeholder]').forEach(el => {
-        const current = el.getAttribute('placeholder');
-        let original = originalPlaceholders.get(el);
-        if (!original && window.STIT_TRANSLATIONS[current]) {
-          original = current;
-          originalPlaceholders.set(el, original);
-        }
-        if (original) {
-          el.setAttribute('placeholder', lang === 'hr' ? original : window.STIT_TRANSLATIONS[original]);
-        }
-      });
-
-      document.title = lang === 'hr'
-        ? 'STIT TAXI | Taxi i privatni prijevoz Njivice - otok Krk'
-        : 'STIT TAXI | Taxi and private transfer Njivice - island of Krk';
-
-      const desc = document.querySelector('meta[name="description"]');
-      if (desc) {
-        desc.setAttribute('content', lang === 'hr'
-          ? 'STIT TAXI - pouzdan taxi i privatni prijevoz u Njivicama i na otoku Krku. Lokalni prijevoz, turistički transferi i vožnje po dogovoru.'
-          : 'STIT TAXI - reliable taxi and private transfer in Njivice and on the island of Krk. Local transport, tourist transfers and rides by arrangement.'
-        );
-      }
-
-      document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.langBtn === lang);
-      });
-    }
-
-    document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-      btn.addEventListener('click', () => applyLanguage(btn.dataset.langBtn));
-    });
-
     const nav = document.getElementById('nav');
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
@@ -708,22 +481,17 @@
     document.getElementById('rideForm').addEventListener('submit', function(e){
       e.preventDefault();
       const data = new FormData(this);
-      const isEn = window.STIT_LANG === 'en';
-      const fallback = isEn ? 'By arrangement' : 'Po dogovoru';
-      const text = (isEn
-        ? `Hello, I would like to send an inquiry for a STIT TAXI ride.%0A%0A`
-        : `Pozdrav, želim poslati upit za STIT TAXI vožnju.%0A%0A`) +
-        `${isEn ? 'Name' : 'Ime'}: ${encodeURIComponent(data.get('name') || '')}%0A` +
-        `${isEn ? 'Phone' : 'Telefon'}: ${encodeURIComponent(data.get('phone') || '')}%0A` +
-        `${isEn ? 'Date' : 'Datum'}: ${encodeURIComponent(data.get('date') || fallback)}%0A` +
-        `${isEn ? 'Time' : 'Vrijeme'}: ${encodeURIComponent(data.get('time') || fallback)}%0A` +
-        `${isEn ? 'Passengers' : 'Broj putnika'}: ${encodeURIComponent(data.get('passengers') || '')}%0A` +
-        `${isEn ? 'Ride type' : 'Vrsta vožnje'}: ${encodeURIComponent(data.get('type') || '')}%0A` +
-        `${isEn ? 'Route' : 'Relacija'}: ${encodeURIComponent(data.get('route') || '')}%0A` +
-        `${isEn ? 'Message' : 'Poruka'}: ${encodeURIComponent(data.get('message') || '-')}`;
+      const text = `Pozdrav, želim poslati upit za STIT TAXI vožnju.%0A%0A` +
+        `Ime: ${encodeURIComponent(data.get('name') || '')}%0A` +
+        `Telefon: ${encodeURIComponent(data.get('phone') || '')}%0A` +
+        `Datum: ${encodeURIComponent(data.get('date') || 'Po dogovoru')}%0A` +
+        `Vrijeme: ${encodeURIComponent(data.get('time') || 'Po dogovoru')}%0A` +
+        `Broj putnika: ${encodeURIComponent(data.get('passengers') || '')}%0A` +
+        `Vrsta vožnje: ${encodeURIComponent(data.get('type') || '')}%0A` +
+        `Relacija: ${encodeURIComponent(data.get('route') || '')}%0A` +
+        `Poruka: ${encodeURIComponent(data.get('message') || '-')}`;
       window.open(`https://wa.me/385959046777?text=${text}`, '_blank', 'noopener');
     });
-    applyLanguage(window.STIT_LANG);
   </script>
 </body>
 </html>
