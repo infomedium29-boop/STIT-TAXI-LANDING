@@ -136,6 +136,9 @@
       linear-gradient(135deg,rgba(255,255,255,.18),transparent 34%),
       radial-gradient(circle at 20% 80%,rgba(75,130,190,.22),transparent 32%);
     }
+    .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.72) saturate(1.04) contrast(1.08);transform:scale(1.01)}
+    .car-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,18,.22),transparent 45%,rgba(5,10,18,.08));pointer-events:none;z-index:1}
+    .glass-pill,.route-card{z-index:2}
     .coast-line{position:absolute;left:34px;right:34px;bottom:112px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
     .road{position:absolute;left:-12%;right:-12%;bottom:0;height:150px;background:linear-gradient(180deg,rgba(10,19,32,.2),#02060c);transform:skewY(-4deg);transform-origin:right bottom}
     .road:before{content:"";position:absolute;left:18%;right:10%;top:44%;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.45) 0 50px,transparent 50px 80px);opacity:.52}
@@ -223,7 +226,7 @@
     }
     @media (min-width:1041px){.nav-links .mobile-cta{display:none}}
     @media (max-width:760px){
-      :root{--nav-h:76px}.container,.nav-inner{width:min(100% - 28px,var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding:112px 0 68px}.hero-tags{gap:8px}.tag{font-size:11px;padding:8px 10px}.hero-cta{display:grid;grid-template-columns:1fr;gap:12px}.btn{width:100%}.trust-row{grid-template-columns:1fr;margin-top:26px}.hero-visual{min-height:360px}.car-card{inset:6px 0 0 0;border-radius:30px;transform:none}.glass-pill{right:14px;top:14px;width:74%;padding:14px;border-radius:20px}.route-card{left:12px;right:12px;width:auto;bottom:14px;padding:15px;border-radius:20px}.car-svg{left:-18%;right:-18%;bottom:74px;max-width:136%}.coast-line{bottom:95px}.road{height:120px}.cards,.steps{grid-template-columns:1fr}.card{min-height:auto;padding:24px}.dark-panel{border-radius:30px}.why-copy{padding:28px}.why-visual{min-height:440px}.service-strip{left:14px;right:14px;bottom:14px}.strip-item{padding:13px 14px}.form-card,.contact-info{border-radius:28px;padding:24px}.form-grid{grid-template-columns:1fr}.form-title{display:block}.form-title h3{font-size:26px}.cta-band{padding:30px;border-radius:30px}.footer-inner{flex-direction:column;align-items:flex-start}.floating-cta{right:14px;bottom:14px;gap:10px}.float-btn{width:62px;height:62px;border-radius:20px}.float-btn svg{width:28px;height:28px}.float-btn.viber svg{width:30px;height:30px}.brand span{font-size:18px}.brand-mark{width:42px;height:42px;border-radius:15px}.nav-links{font-size:25px}.marquee-track{font-size:12px;gap:22px}.marquee-track span{gap:22px}
+      :root{--nav-h:76px}.container,.nav-inner{width:min(100% - 28px,var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding:112px 0 68px}.hero-tags{gap:8px}.tag{font-size:11px;padding:8px 10px}.hero-cta{display:grid;grid-template-columns:1fr;gap:12px}.btn{width:100%}.trust-row{grid-template-columns:1fr;margin-top:26px}.hero-visual{min-height:360px}.car-card{inset:6px 0 0 0;border-radius:30px;transform:none}.hero-photo{object-position:center center}.glass-pill{right:14px;top:14px;width:74%;padding:14px;border-radius:20px}.route-card{left:12px;right:12px;width:auto;bottom:14px;padding:15px;border-radius:20px}.car-svg{left:-18%;right:-18%;bottom:74px;max-width:136%}.coast-line{bottom:95px}.road{height:120px}.cards,.steps{grid-template-columns:1fr}.card{min-height:auto;padding:24px}.dark-panel{border-radius:30px}.why-copy{padding:28px}.why-visual{min-height:440px}.service-strip{left:14px;right:14px;bottom:14px}.strip-item{padding:13px 14px}.form-card,.contact-info{border-radius:28px;padding:24px}.form-grid{grid-template-columns:1fr}.form-title{display:block}.form-title h3{font-size:26px}.cta-band{padding:30px;border-radius:30px}.footer-inner{flex-direction:column;align-items:flex-start}.floating-cta{right:14px;bottom:14px;gap:10px}.float-btn{width:62px;height:62px;border-radius:20px}.float-btn svg{width:28px;height:28px}.float-btn.viber svg{width:30px;height:30px}.brand span{font-size:18px}.brand-mark{width:42px;height:42px;border-radius:15px}.nav-links{font-size:25px}.marquee-track{font-size:12px;gap:22px}.marquee-track span{gap:22px}
     }
     @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
@@ -284,27 +287,9 @@
         </div>
 
         <div class="hero-visual reveal" aria-label="Premium taxi vizual">
-          <div class="car-card">
+          <div class="car-card hero-image-card">
+            <img class="hero-photo" src="assets/images/landing-hero-taxi.avif?v=renault-stit-2" alt="Renault vozilo STIT TAXI za prijevoz putnika na otoku Krku" loading="eager" fetchpriority="high" decoding="async" />
             <div class="glass-pill"><strong>Private transfer osjećaj</strong><span>Uredan nastup, sigurna vožnja i jednostavan dogovor za putnike, goste apartmana i turiste.</span></div>
-            <div class="coast-line"></div>
-            <div class="road"></div>
-            <svg class="car-svg" viewBox="0 0 900 320" aria-hidden="true">
-              <defs>
-                <linearGradient id="carBody" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset=".42" stop-color="#c9d4e4"/><stop offset="1" stop-color="#eef4fb"/></linearGradient>
-                <linearGradient id="window" x1="0" x2="1"><stop offset="0" stop-color="#1e3a5b"/><stop offset="1" stop-color="#08111f"/></linearGradient>
-                <linearGradient id="goldLine" x1="0" x2="1"><stop offset="0" stop-color="#f1d59a"/><stop offset="1" stop-color="#d8ae62"/></linearGradient>
-              </defs>
-              <path d="M126 200c14-52 55-78 118-83l110-10c50-68 94-91 170-91h83c51 0 91 25 139 88l43 9c55 12 82 46 88 87l-29 42H154l-28-42Z" fill="url(#carBody)"/>
-              <path d="M375 115c34-46 67-62 120-62h91c38 0 67 18 99 62H375Z" fill="url(#window)" opacity=".95"/>
-              <path d="M399 105c24-31 48-43 86-43h19v43H399Z" fill="#2c5279" opacity=".55"/>
-              <path d="M528 62h49c31 0 53 13 78 43H528V62Z" fill="#102640" opacity=".88"/>
-              <path d="M193 207h595" stroke="url(#goldLine)" stroke-width="8" stroke-linecap="round"/>
-              <path d="M707 147h98c18 0 34 13 38 30l5 22h-85c-26 0-49-14-61-37l5-15Z" fill="#f1d59a" opacity=".68"/>
-              <path d="M132 197h77c19 0 34-12 40-30l4-14h-58c-28 0-52 18-61 44Z" fill="#f1d59a" opacity=".45"/>
-              <circle cx="276" cy="232" r="55" fill="#070d17"/><circle cx="276" cy="232" r="29" fill="#dce6f5"/><circle cx="276" cy="232" r="12" fill="#8897aa"/>
-              <circle cx="704" cy="232" r="55" fill="#070d17"/><circle cx="704" cy="232" r="29" fill="#dce6f5"/><circle cx="704" cy="232" r="12" fill="#8897aa"/>
-              <path d="M442 145h55" stroke="#8fa2b8" stroke-width="6" stroke-linecap="round"/>
-            </svg>
             <div class="route-card"><div class="mini">Primjer relacije</div><strong>Njivice → Zračna luka / Krk</strong><p>Transferi i lokalne vožnje po prethodnom dogovoru.</p></div>
           </div>
         </div>
