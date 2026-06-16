@@ -89,10 +89,6 @@
     .nav.scrolled{height:74px;background:rgba(5,10,18,.86);box-shadow:0 15px 60px rgba(0,0,0,.28)}
     .nav-inner{width:min(var(--max),calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-.04em;font-size:20px;z-index:52}
-    .brand-mark{
-      width:46px;height:46px;border-radius:16px;display:grid;place-items:center;color:#101010;font-weight:950;
-      background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 12px 40px rgba(216,174,98,.25);
-    }
     .brand span small{display:block;color:var(--muted);font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-top:-2px;font-weight:800}
     .nav-links{display:flex;align-items:center;gap:28px;color:#d9e3f2;font-weight:700;font-size:14px}
     .nav-links a{opacity:.82;transition:.25s ease}
@@ -226,7 +222,7 @@
     }
     @media (min-width:1041px){.nav-links .mobile-cta{display:none}}
     @media (max-width:760px){
-      :root{--nav-h:76px}.container,.nav-inner{width:min(100% - 28px,var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding:112px 0 68px}.hero-tags{gap:8px}.tag{font-size:11px;padding:8px 10px}.hero-cta{display:grid;grid-template-columns:1fr;gap:12px}.btn{width:100%}.trust-row{grid-template-columns:1fr;margin-top:26px}.hero-visual{min-height:360px}.car-card{inset:6px 0 0 0;border-radius:30px;transform:none}.hero-photo{object-position:center center}.glass-pill{right:14px;top:14px;width:74%;padding:14px;border-radius:20px}.route-card{left:12px;right:12px;width:auto;bottom:14px;padding:15px;border-radius:20px}.car-svg{left:-18%;right:-18%;bottom:74px;max-width:136%}.coast-line{bottom:95px}.road{height:120px}.cards,.steps{grid-template-columns:1fr}.card{min-height:auto;padding:24px}.dark-panel{border-radius:30px}.why-copy{padding:28px}.why-visual{min-height:440px}.service-strip{left:14px;right:14px;bottom:14px}.strip-item{padding:13px 14px}.form-card,.contact-info{border-radius:28px;padding:24px}.form-grid{grid-template-columns:1fr}.form-title{display:block}.form-title h3{font-size:26px}.cta-band{padding:30px;border-radius:30px}.footer-inner{flex-direction:column;align-items:flex-start}.floating-cta{right:14px;bottom:14px;gap:10px}.float-btn{width:62px;height:62px;border-radius:20px}.float-btn svg{width:28px;height:28px}.float-btn.viber svg{width:30px;height:30px}.brand span{font-size:18px}.brand-mark{width:42px;height:42px;border-radius:15px}.nav-links{font-size:25px}.marquee-track{font-size:12px;gap:22px}.marquee-track span{gap:22px}
+      :root{--nav-h:76px}.container,.nav-inner{width:min(100% - 28px,var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding:112px 0 68px}.hero-tags{gap:8px}.tag{font-size:11px;padding:8px 10px}.hero-cta{display:grid;grid-template-columns:1fr;gap:12px}.btn{width:100%}.trust-row{grid-template-columns:1fr;margin-top:26px}.hero-visual{min-height:360px}.car-card{inset:6px 0 0 0;border-radius:30px;transform:none}.hero-photo{object-position:center center}.glass-pill{right:14px;top:14px;width:74%;padding:14px;border-radius:20px}.route-card{left:12px;right:12px;width:auto;bottom:14px;padding:15px;border-radius:20px}.car-svg{left:-18%;right:-18%;bottom:74px;max-width:136%}.coast-line{bottom:95px}.road{height:120px}.cards,.steps{grid-template-columns:1fr}.card{min-height:auto;padding:24px}.dark-panel{border-radius:30px}.why-copy{padding:28px}.why-visual{min-height:440px}.service-strip{left:14px;right:14px;bottom:14px}.strip-item{padding:13px 14px}.form-card,.contact-info{border-radius:28px;padding:24px}.form-grid{grid-template-columns:1fr}.form-title{display:block}.form-title h3{font-size:26px}.cta-band{padding:30px;border-radius:30px}.footer-inner{flex-direction:column;align-items:flex-start}.floating-cta{right:14px;bottom:14px;gap:10px}.float-btn{width:62px;height:62px;border-radius:20px}.float-btn svg{width:28px;height:28px}.float-btn.viber svg{width:30px;height:30px}.brand span{font-size:18px}.nav-links{font-size:25px}.marquee-track{font-size:12px;gap:22px}.marquee-track span{gap:22px}
     }
     @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
@@ -238,7 +234,6 @@
   <header class="nav" id="nav">
     <div class="nav-inner">
       <a class="brand" href="#pocetna" aria-label="STIT TAXI početna">
-        <span class="brand-mark">S</span>
         <span>STIT TAXI<small>Njivice • Krk</small></span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Glavna navigacija">
