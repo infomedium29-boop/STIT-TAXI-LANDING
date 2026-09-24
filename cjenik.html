@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cjenik autotaksi usluga STIT TAXI Njivice. Start, cijena po kilometru, čekanje i prtljaga uz jasno prikazane sidrene cijene." />
+  <link rel="canonical" href="https://taxi-krk-stit.hr/cjenik">
+  <meta name="robots" content="index, follow">
+  <title>Cjenik | STIT TAXI Njivice</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="theme-color" content="#07111f">
+  <link rel="alternate" type="text/csv" href="/cjenici/cjenik-aktualni.csv">
+  <link rel="alternate" type="application/xml" href="/cjenici/cjenik-aktualni.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg-2:#0b1728;
+      --surface:#101d30;
+      --surface-2:#14243b;
+      --text:#f7fbff;
+      --muted:#a8b6ca;
+      --soft:#d7e1ee;
+      --gold:#d8ae62;
+      --gold-2:#f1d59a;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 30px 100px rgba(0,0,0,.45);
+      --radius:28px;
+      --radius-sm:18px;
+      --max:1180px;
+      --nav-h:86px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 5%, rgba(216,174,98,.22), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(58,128,199,.18), transparent 32%),
+        linear-gradient(180deg,#060d18 0%,#081321 43%,#050a12 100%);
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img,svg{max-width:100%;display:block}
+    button,input,textarea,select{font:inherit}
+    ::selection{background:rgba(216,174,98,.35);color:#fff}
+
+    .page-noise{
+      position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.08;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    }
+
+    .container{width:min(var(--max),calc(100% - 40px));margin-inline:auto;position:relative;z-index:1}
+    .section{padding:110px 0;position:relative}
+    .section-tight{padding:84px 0}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      color:var(--gold-2);font-weight:800;text-transform:uppercase;
+      letter-spacing:.16em;font-size:12px;margin-bottom:18px;
+    }
+    .eyebrow:before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+    h1,h2,h3{line-height:1.04;letter-spacing:-.04em}
+    h1{font-size:clamp(44px,7.2vw,86px);font-weight:900;max-width:920px}
+    h2{font-size:clamp(34px,4.6vw,58px);font-weight:900;max-width:760px}
+    h3{font-size:23px;font-weight:850;letter-spacing:-.03em}
+    p{color:var(--muted);font-size:16px;line-height:1.85}
+    .lead{font-size:clamp(17px,2vw,21px);line-height:1.85;color:#cbd7e8;max-width:740px;margin-top:24px}
+    .gold{color:var(--gold-2)}
+
+    .btn{
+      min-height:54px;border:1px solid transparent;border-radius:999px;padding:0 24px;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      font-weight:850;letter-spacing:-.01em;cursor:pointer;transition:.35s ease;
+      white-space:nowrap;position:relative;overflow:hidden;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold-2),var(--gold));
+      color:#111827;box-shadow:0 16px 44px rgba(216,174,98,.24);
+    }
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 60px rgba(216,174,98,.32)}
+    .btn-secondary{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.06);backdrop-filter:blur(18px);color:#fff}
+    .btn-secondary:hover{border-color:rgba(216,174,98,.5);background:rgba(216,174,98,.09);transform:translateY(-3px)}
+    .btn svg{width:18px;height:18px}
+
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;
+      transition:.3s ease;background:rgba(5,10,18,.18);backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav.scrolled{height:74px;background:rgba(5,10,18,.86);box-shadow:0 15px 60px rgba(0,0,0,.28)}
+    .nav-inner{width:min(var(--max),calc(100% - 40px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-.04em;font-size:20px;z-index:52}
+    .brand-mark{
+      width:46px;height:46px;border-radius:16px;display:grid;place-items:center;color:#101010;font-weight:950;
+      background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 12px 40px rgba(216,174,98,.25);
+    }
+    .brand span small{display:block;color:var(--muted);font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin-top:-2px;font-weight:800}
+    .nav-links{display:flex;align-items:center;gap:28px;color:#d9e3f2;font-weight:700;font-size:14px}
+    .nav-links a{opacity:.82;transition:.25s ease}
+    .nav-links a:hover{opacity:1;color:var(--gold-2)}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .lang-switch{display:flex;align-items:center;gap:4px;padding:5px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(255,255,255,.055);backdrop-filter:blur(18px);z-index:52}
+    .lang-switch button{border:0;background:transparent;color:rgba(255,255,255,.72);font-weight:900;font-size:12px;letter-spacing:.04em;border-radius:999px;padding:8px 10px;cursor:pointer;transition:.25s ease}
+    .lang-switch button.active{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#111827;box-shadow:0 10px 24px rgba(216,174,98,.18)}
+    .nav-actions .btn{min-height:46px;padding:0 18px;font-size:14px}
+    .menu-btn{display:none;width:48px;height:48px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;z-index:52}
+    .menu-btn span{display:block;width:20px;height:2px;background:#fff;margin:5px auto;border-radius:20px;transition:.25s ease}
+    .menu-open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .menu-open .menu-btn span:nth-child(2){opacity:0}
+    .menu-open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .hero{min-height:100svh;padding:calc(var(--nav-h) + 54px) 0 78px;display:flex;align-items:center;position:relative;overflow:hidden}
+    .hero:before{
+      content:"";position:absolute;inset:0;background:
+      linear-gradient(90deg,rgba(5,10,18,.9) 0%,rgba(5,10,18,.72) 42%,rgba(5,10,18,.34) 100%),
+      radial-gradient(circle at 78% 54%,rgba(216,174,98,.2),transparent 32%);
+      z-index:0;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:54px;align-items:center;width:100%}
+    .hero-copy{position:relative;z-index:2}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+    .tag{border:1px solid rgba(216,174,98,.27);background:rgba(216,174,98,.08);color:#f3dcaa;border-radius:999px;padding:9px 13px;font-size:13px;font-weight:800;backdrop-filter:blur(16px)}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+    .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px;max-width:690px}
+    .trust-item{padding:16px 18px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.055);backdrop-filter:blur(18px)}
+    .trust-item strong{display:block;font-size:24px;color:#fff;letter-spacing:-.04em;line-height:1.1}.contact-number{font-size:19px!important;letter-spacing:-.055em!important;white-space:nowrap}
+    .trust-item span{display:block;margin-top:5px;color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+
+    .hero-visual{position:relative;min-height:540px;z-index:1;perspective:1000px}
+    .car-card{
+      position:absolute;inset:26px 0 0 0;border:1px solid rgba(255,255,255,.12);border-radius:42px;
+      background:
+        linear-gradient(160deg,rgba(255,255,255,.13),rgba(255,255,255,.04)),
+        radial-gradient(circle at 72% 18%,rgba(216,174,98,.33),transparent 29%),
+        linear-gradient(145deg,#14243b,#07111f 68%);
+      box-shadow:var(--shadow);overflow:hidden;transform:rotateY(-6deg) rotateX(4deg);
+    }
+    .car-card:before{
+      content:"";position:absolute;inset:0;background:
+      linear-gradient(135deg,rgba(255,255,255,.18),transparent 34%),
+      radial-gradient(circle at 20% 80%,rgba(75,130,190,.22),transparent 32%);
+    }
+    .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.72) saturate(1.04) contrast(1.08);transform:scale(1.01)}
+    .car-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,18,.22),transparent 45%,rgba(5,10,18,.08));pointer-events:none;z-index:1}
+    .glass-pill,.route-card{z-index:2}
+    .coast-line{position:absolute;left:34px;right:34px;bottom:112px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7}
+    .road{position:absolute;left:-12%;right:-12%;bottom:0;height:150px;background:linear-gradient(180deg,rgba(10,19,32,.2),#02060c);transform:skewY(-4deg);transform-origin:right bottom}
+    .road:before{content:"";position:absolute;left:18%;right:10%;top:44%;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.45) 0 50px,transparent 50px 80px);opacity:.52}
+    .car-svg{position:absolute;left:4%;right:2%;bottom:76px;filter:drop-shadow(0 30px 35px rgba(0,0,0,.58));animation:floatCar 6s ease-in-out infinite}
+    @keyframes floatCar{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .glass-pill{position:absolute;right:24px;top:24px;width:min(310px,70%);padding:18px;border-radius:24px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(20px);box-shadow:0 18px 60px rgba(0,0,0,.25)}
+    .glass-pill strong{display:block;font-size:14px;color:#fff;margin-bottom:5px}.glass-pill span{color:var(--muted);font-size:13px;line-height:1.55}
+    .route-card{position:absolute;left:-12px;bottom:26px;width:270px;padding:20px;border-radius:26px;background:rgba(8,17,31,.78);border:1px solid rgba(216,174,98,.25);backdrop-filter:blur(20px);box-shadow:0 26px 80px rgba(0,0,0,.35)}
+    .route-card .mini{font-size:12px;font-weight:900;color:var(--gold-2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}.route-card strong{font-size:22px;line-height:1.15;display:block}.route-card p{font-size:13px;line-height:1.6;margin-top:8px}
+
+    .marquee{border-block:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035);overflow:hidden;white-space:nowrap;position:relative;z-index:2}
+    .marquee-track{display:inline-flex;gap:34px;padding:16px 0;animation:marq 28s linear infinite;color:#dce6f5;font-weight:850;letter-spacing:.03em;text-transform:uppercase;font-size:13px}
+    .marquee-track span{display:inline-flex;align-items:center;gap:34px}.marquee-track span:after{content:"•";color:var(--gold)}
+    @keyframes marq{to{transform:translateX(-50%)}}
+
+    .split{display:grid;grid-template-columns:.88fr 1.12fr;gap:54px;align-items:end}
+    .section-head{margin-bottom:48px}.section-head p{max-width:680px;margin-top:18px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      position:relative;padding:28px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(160deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+      box-shadow:0 20px 70px rgba(0,0,0,.18);overflow:hidden;transition:.35s ease;min-height:250px;
+    }
+    .card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,rgba(216,174,98,.16),transparent 34%);opacity:0;transition:.35s ease}
+    .card:hover{transform:translateY(-8px);border-color:rgba(216,174,98,.33);box-shadow:0 26px 90px rgba(0,0,0,.28)}
+    .card:hover:before{opacity:1}
+    .icon{width:54px;height:54px;border-radius:18px;background:rgba(216,174,98,.12);border:1px solid rgba(216,174,98,.24);display:grid;place-items:center;color:var(--gold-2);margin-bottom:22px;position:relative;z-index:1}
+    .icon svg{width:24px;height:24px}.card h3,.card p{position:relative;z-index:1}.card p{margin-top:13px;font-size:15px;line-height:1.75}
+    .card-link{position:relative;z-index:1;display:inline-flex;margin-top:22px;color:var(--gold-2);font-weight:850;font-size:14px}
+
+    .dark-panel{border:1px solid rgba(255,255,255,.11);border-radius:42px;background:
+      radial-gradient(circle at 10% 0%,rgba(216,174,98,.18),transparent 34%),
+      linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+      box-shadow:var(--shadow);overflow:hidden;position:relative;
+    }
+    .why{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+    .why-copy{padding:54px}.why-list{display:grid;gap:14px;margin-top:28px}
+    .why-item{display:flex;gap:15px;padding:16px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}
+    .check{flex:0 0 28px;width:28px;height:28px;border-radius:999px;background:rgba(216,174,98,.15);color:var(--gold-2);display:grid;place-items:center;font-weight:900}
+    .why-item strong{display:block;color:#fff;margin-bottom:2px}.why-item span{color:var(--muted);font-size:14px;line-height:1.55}
+    .why-visual{min-height:620px;background:
+      linear-gradient(180deg,rgba(8,31,56,.18),rgba(5,20,38,.55)),
+      radial-gradient(circle at 50% 40%,rgba(216,174,98,.12),transparent 32%),
+      linear-gradient(135deg,#0a3762,#05213e);position:relative;overflow:hidden}
+
+    .why-map-img{position:absolute;inset:14px;width:calc(100% - 28px);height:calc(100% - 28px);object-fit:contain;object-position:center center;display:block;filter:saturate(1.02) contrast(1.03)}
+    .map-rings{position:absolute;inset:11%;border-radius:50%;border:1px solid rgba(216,174,98,.18)}
+    .map-rings:before,.map-rings:after{content:"";position:absolute;inset:14%;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+    .map-rings:after{inset:28%;border-color:rgba(216,174,98,.28)}
+    .pin{position:absolute;width:16px;height:16px;background:var(--gold-2);border-radius:50%;box-shadow:0 0 0 10px rgba(216,174,98,.14),0 0 45px rgba(216,174,98,.65)}
+    .pin.one{left:56%;top:42%}.pin.two{left:32%;top:54%;animation:pulse 2.5s infinite}.pin.three{left:64%;top:66%;animation:pulse 3s infinite}.pin.four{left:42%;top:30%;animation:pulse 3.4s infinite}
+    @keyframes pulse{50%{box-shadow:0 0 0 18px rgba(216,174,98,0),0 0 45px rgba(216,174,98,.65)}}
+    .route-line{position:absolute;left:28%;top:32%;width:48%;height:42%;border:2px dashed rgba(216,174,98,.34);border-left:0;border-bottom:0;border-radius:0 100% 0 0;transform:rotate(12deg)}
+    .service-strip{position:absolute;left:28px;right:28px;bottom:28px;display:grid;gap:10px}
+    .strip-item{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:rgba(5,10,18,.64);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(20px)}
+    .strip-item b{font-size:14px}.strip-item span{font-size:12px;color:var(--gold-2);font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+    .step{padding:30px;border-radius:var(--radius);background:#f7fbff;color:#07111f;min-height:230px;position:relative;overflow:hidden}
+    .step:after{content:"";position:absolute;right:-70px;top:-70px;width:190px;height:190px;border-radius:50%;background:rgba(216,174,98,.22)}
+    .step-num{font-size:14px;color:#7e5d26;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.step h3{margin-top:18px}.step p{color:#4b5b6d;margin-top:12px;font-size:15px}.step:nth-child(2){background:#eaf0f8}.step:nth-child(3){background:linear-gradient(135deg,var(--gold-2),var(--gold))}
+
+    .contact-wrap{display:grid;grid-template-columns:.83fr 1.17fr;gap:22px;align-items:stretch}
+    .contact-info{padding:42px;border-radius:36px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.1)}
+    .contact-info .lead{font-size:17px}.contact-methods{display:grid;gap:13px;margin-top:30px}
+    .method{display:flex;gap:14px;align-items:center;padding:16px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09)}
+    .method .m-icon{width:42px;height:42px;border-radius:15px;background:rgba(216,174,98,.12);color:var(--gold-2);display:grid;place-items:center;flex:0 0 42px}.method strong{display:block;color:#fff}.method span{display:block;color:var(--muted);font-size:14px;margin-top:1px}
+    .form-card{padding:34px;border-radius:36px;background:#f8fbff;color:#07111f;box-shadow:var(--shadow)}
+    .form-title{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:24px}.form-title h3{font-size:30px}.form-title p{color:#5d6b7d;font-size:14px;line-height:1.6;margin-top:8px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:8px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:850;color:#223047}input,textarea,select{width:100%;border:1px solid #dbe4ef;border-radius:16px;background:#fff;color:#07111f;padding:14px 15px;outline:none;transition:.25s ease}textarea{min-height:116px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(216,174,98,.13)}.form-note{font-size:13px;color:#66768a;margin-top:14px;line-height:1.6}.form-card .btn{width:100%;margin-top:18px;border:0}
+
+    .cta-band{padding:56px;border-radius:42px;background:
+      linear-gradient(90deg,rgba(5,10,18,.72),rgba(5,10,18,.35)),
+      radial-gradient(circle at 82% 34%,rgba(216,174,98,.35),transparent 30%),
+      linear-gradient(135deg,#172943,#07111f);border:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow)}
+    .cta-band h2{font-size:clamp(30px,4vw,52px)}.cta-band p{margin-top:14px;max-width:650px}
+
+    .footer{padding:42px 0;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.16)}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:14px}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.footer-links a{transition:.25s ease}.footer-links a:hover{color:var(--gold-2)}
+
+    .floating-cta{position:fixed;right:20px;bottom:20px;z-index:48;display:flex;flex-direction:column;gap:12px}.float-btn{width:70px;height:70px;border-radius:24px;display:grid;place-items:center;color:#08111f;background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 20px 58px rgba(0,0,0,.36);transition:.25s ease}.float-btn:hover{transform:translateY(-3px) scale(1.02)}.float-btn.call{background:#f6fbff;color:#07111f}.float-btn.viber{background:linear-gradient(135deg,#8f5cff,#6d3bd1);color:#fff}.float-btn svg{width:30px;height:30px}.float-btn.viber svg{width:32px;height:32px}.m-icon svg{width:21px;height:21px}.m-icon.viber{background:rgba(125,82,230,.14);color:#9d7cff}.m-icon.viber svg{width:22px;height:22px}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease, transform .8s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+
+    @media (max-width:1040px){
+      .hero-grid,.split,.why,.contact-wrap{grid-template-columns:1fr}.hero{padding-top:132px}.hero-visual{min-height:500px;order:-1}.hero-copy{order:1}.why-visual{min-height:520px}.cards{grid-template-columns:repeat(2,1fr)}.cta-band{grid-template-columns:1fr}.nav-actions{display:none}.lang-switch{margin-left:auto}.menu-btn{display:block}.nav-links{position:fixed;top:0;left:0;right:0;height:100svh;background:rgba(5,10,18,.96);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:90px 34px;gap:22px;transform:translateX(100%);transition:.35s ease;font-size:30px;font-weight:900}.menu-open .nav-links{transform:translateX(0)}.nav-links a{opacity:1}.nav .mobile-cta{display:inline-flex;margin-top:12px;font-size:16px}.nav-links .mobile-cta{min-height:54px;background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#111827;border-radius:999px;padding:0 24px;align-items:center;justify-content:center}
+    }
+    @media (min-width:1041px){.nav-links .mobile-cta{display:none}}
+    @media (max-width:760px){
+      :root{--nav-h:76px}.container,.nav-inner{width:min(100% - 28px,var(--max))}.section{padding:82px 0}.hero{min-height:auto;padding:112px 0 68px}.hero-tags{gap:8px}.tag{font-size:11px;padding:8px 10px}.hero-cta{display:grid;grid-template-columns:1fr;gap:12px}.btn{width:100%}.trust-row{grid-template-columns:1fr;margin-top:26px}.hero-visual{min-height:360px}.car-card{inset:6px 0 0 0;border-radius:30px;transform:none}.hero-photo{object-position:center center}.glass-pill{right:14px;top:14px;width:74%;padding:14px;border-radius:20px}.route-card{left:12px;right:12px;width:auto;bottom:14px;padding:15px;border-radius:20px}.car-svg{left:-18%;right:-18%;bottom:74px;max-width:136%}.coast-line{bottom:95px}.road{height:120px}.cards,.steps{grid-template-columns:1fr}.card{min-height:auto;padding:24px}.dark-panel{border-radius:30px}.why-copy{padding:28px}.why-visual{min-height:440px}.why-map-img{inset:10px;width:calc(100% - 20px);height:calc(100% - 20px)}.service-strip{left:14px;right:14px;bottom:14px}.strip-item{padding:13px 14px}.form-card,.contact-info{border-radius:28px;padding:24px}.form-grid{grid-template-columns:1fr}.form-title{display:block}.form-title h3{font-size:26px}.cta-band{padding:30px;border-radius:30px}.footer-inner{flex-direction:column;align-items:flex-start}.floating-cta{right:14px;bottom:14px;gap:10px}.float-btn{width:62px;height:62px;border-radius:20px}.float-btn svg{width:28px;height:28px}.float-btn.viber svg{width:30px;height:30px}.brand span{font-size:18px}.nav-links{font-size:25px}.lang-switch button{font-size:11px;padding:7px 9px}.marquee-track{font-size:12px;gap:22px}.marquee-track span{gap:22px}
+    }
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+
+    /* GDPR / Cookie banner */
+    .cookie-banner{
+      position:fixed;left:20px;right:20px;bottom:20px;z-index:9999;display:none;
+      max-width:1040px;margin:0 auto;padding:22px;border-radius:26px;
+      background:rgba(7,17,31,.96);border:1px solid rgba(216,174,98,.28);
+      box-shadow:0 24px 90px rgba(0,0,0,.48);backdrop-filter:blur(18px);
+    }
+    .cookie-banner.show{display:block;animation:cookieIn .35s ease both}
+    @keyframes cookieIn{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .cookie-content{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center}
+    .cookie-content h3{font-size:21px;margin-bottom:8px;color:#fff;letter-spacing:-.03em}
+    .cookie-content p{font-size:14px;line-height:1.65;color:#cbd7e8;margin:0}
+    .cookie-content a{color:var(--gold-2);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+    .cookie-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .cookie-btn{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:12px 16px;cursor:pointer;font-weight:850;color:#fff;background:rgba(255,255,255,.06);transition:.25s ease;white-space:nowrap}
+    .cookie-btn:hover{transform:translateY(-2px);border-color:rgba(216,174,98,.55)}
+    .cookie-btn.accept{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#111827;border-color:transparent}
+    .cookie-btn.settings{color:#f3dcaa}
+    .cookie-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.62)}
+    .cookie-modal.show{display:flex}
+    .cookie-modal-card{width:min(560px,100%);border-radius:28px;background:#f8fbff;color:#07111f;padding:28px;box-shadow:0 28px 100px rgba(0,0,0,.45)}
+    .cookie-modal-card h3{font-size:28px;margin-bottom:10px;color:#07111f}.cookie-modal-card p{color:#4b5b6d;font-size:15px;line-height:1.7}
+    .cookie-option{margin-top:16px;padding:16px;border:1px solid #dbe4ef;border-radius:18px;background:#fff;display:flex;gap:14px;align-items:flex-start}
+    .cookie-option input{width:auto;margin-top:4px;accent-color:#d8ae62}.cookie-option strong{display:block;color:#07111f}.cookie-option span{display:block;color:#66768a;font-size:13px;line-height:1.55;margin-top:4px}
+    .cookie-modal-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:22px}.cookie-modal-actions .cookie-btn{color:#07111f;border-color:#dbe4ef;background:#fff}.cookie-modal-actions .cookie-btn.accept{background:linear-gradient(135deg,var(--gold-2),var(--gold));border:0}
+    @media(max-width:760px){.cookie-banner{left:12px;right:12px;bottom:12px;padding:18px;border-radius:22px}.cookie-content{grid-template-columns:1fr}.cookie-actions{justify-content:stretch}.cookie-btn{width:100%}.cookie-modal-card{padding:22px;border-radius:22px}.cookie-modal-actions .cookie-btn{width:100%}}
+
+  
+
+    /* Premium price list page */
+    .pricing-page{min-height:100vh;padding-top:var(--nav-h)}
+    .pricing-hero{position:relative;overflow:hidden;padding:96px 0 64px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .pricing-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 18%,rgba(216,174,98,.18),transparent 31%),radial-gradient(circle at 12% 62%,rgba(58,128,199,.13),transparent 32%);pointer-events:none}
+    .pricing-hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);gap:50px;align-items:end}
+    .pricing-hero h1{max-width:820px}
+    .pricing-hero .lead{max-width:700px}
+    .pricing-summary{padding:24px;border:1px solid rgba(216,174,98,.19);border-radius:30px;background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.035));backdrop-filter:blur(20px);box-shadow:var(--shadow)}
+    .summary-grid{display:grid;gap:10px}
+    .summary-item{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 17px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(4,9,16,.24)}
+    .summary-item span{color:var(--muted);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .summary-item strong{font-size:18px;color:#fff;white-space:nowrap}
+    .pricing-section{padding-top:76px}
+    .pricing-section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:30px}
+    .pricing-section-head p{max-width:540px;margin:0}
+    .start-card{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:28px 30px;margin-bottom:20px;border:1px solid rgba(216,174,98,.23);border-radius:28px;background:linear-gradient(135deg,rgba(216,174,98,.13),rgba(255,255,255,.04));box-shadow:0 20px 70px rgba(0,0,0,.18)}
+    .start-card .mini-label,.tariff-kicker,.support-label,.digital-kicker{display:inline-flex;color:var(--gold-2);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.14em}
+    .start-card h3{font-size:30px;margin:7px 0 4px}
+    .start-card p{margin:0}
+    .start-price{text-align:right}
+    .start-price strong{font-size:clamp(44px,6vw,68px);line-height:1;letter-spacing:-.05em;color:#fff}
+    .start-price small{display:block;margin-top:7px;color:var(--muted);font-weight:700}
+    .anchor-chip{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:7px 10px;border:1px solid rgba(216,174,98,.18);border-radius:999px;background:rgba(216,174,98,.06);color:#e8d4ac;font-size:11px;font-weight:750;letter-spacing:.02em}
+    .tariff-shell{overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:32px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.026));box-shadow:0 24px 90px rgba(0,0,0,.2)}
+    .tariff-header{display:grid;grid-template-columns:1.05fr 1.55fr .72fr;gap:16px;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.035);color:#8496ae;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    .tariff-row{display:grid;grid-template-columns:1.05fr 1.55fr .72fr;gap:16px;align-items:center;padding:22px 24px;border-bottom:1px solid rgba(255,255,255,.075);transition:.25s ease}
+    .tariff-row:last-child{border-bottom:0}
+    .tariff-row:hover{background:rgba(216,174,98,.04)}
+    .tariff-name{display:grid;gap:4px}.tariff-name strong{font-size:18px;color:#fff}.tariff-name span{font-size:12px;color:var(--muted)}
+    .tariff-condition{display:flex;flex-wrap:wrap;gap:8px}
+    .condition-pill{display:inline-flex;align-items:center;padding:8px 11px;border:1px solid rgba(255,255,255,.09);border-radius:999px;background:rgba(255,255,255,.035);color:#c8d4e3;font-size:12px;font-weight:750}
+    .tariff-price{text-align:right}.tariff-price>strong{display:block;font-size:28px;line-height:1.1;color:var(--gold-2);letter-spacing:-.04em}.tariff-price>span{display:block;margin-top:5px;font-size:10px;line-height:1.35;color:#a8b6ca}
+    .support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .support-card{padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:24px;background:rgba(255,255,255,.035)}
+    .support-card h3{margin:9px 0 8px;font-size:23px}.support-card .support-value{font-size:28px;font-weight:900;color:#fff;letter-spacing:-.04em}.support-card p{font-size:13px;line-height:1.65;margin:8px 0 0}
+    .support-card.payment{background:linear-gradient(145deg,rgba(216,174,98,.09),rgba(255,255,255,.03));border-color:rgba(216,174,98,.18)}
+    .info-note{margin-top:20px;padding:20px 22px;border-left:3px solid var(--gold);border-radius:0 18px 18px 0;background:rgba(216,174,98,.055);color:#cbd7e8;font-size:14px;line-height:1.75}
+    .digital-block{display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;margin-top:26px;padding:28px 30px;border:1px solid rgba(216,174,98,.18);border-radius:28px;background:linear-gradient(145deg,rgba(216,174,98,.09),rgba(16,29,48,.72));box-shadow:0 20px 75px rgba(0,0,0,.2)}
+    .digital-block h3{margin:7px 0 8px;font-size:29px}.digital-block p{margin:0;max-width:660px}
+    .digital-actions{display:flex;gap:10px;flex-wrap:wrap}.digital-actions .btn{min-width:156px}
+    .business-card{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:20px;padding:24px;border:1px solid rgba(255,255,255,.09);border-radius:24px;background:rgba(255,255,255,.025)}
+    .business-card strong{display:block;color:#fff;margin-bottom:4px}.business-card span,.business-card a{color:var(--muted);font-size:14px;line-height:1.65}
+    .business-card a:hover{color:var(--gold-2)}
+    .pricing-footer-space{padding-bottom:95px}
+    @media(max-width:900px){.pricing-hero-grid{grid-template-columns:1fr}.pricing-summary{max-width:620px}.pricing-section-head{display:grid}.support-grid{grid-template-columns:1fr 1fr}.digital-block{grid-template-columns:1fr}.digital-actions{width:100%}.digital-actions .btn{flex:1}}
+    @media(max-width:760px){.pricing-page{padding-top:var(--nav-h)}.pricing-hero{padding:60px 0 44px}.pricing-hero h1{font-size:clamp(42px,13vw,64px)}.start-card{grid-template-columns:1fr;padding:23px}.start-price{text-align:left}.tariff-header{display:none}.tariff-shell{border-radius:26px}.tariff-row{grid-template-columns:1fr;padding:22px 20px;gap:15px}.tariff-condition{order:2}.tariff-price{text-align:left;order:3;padding-top:3px}.tariff-price>strong{font-size:31px}.support-grid{grid-template-columns:1fr}.support-card{padding:22px}.digital-block{padding:23px}.digital-actions{display:grid}.digital-actions .btn{width:100%}.business-card{grid-template-columns:1fr;padding:21px}.pricing-footer-space{padding-bottom:78px}}
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TaxiService","name":"STIT TAXI","url":"https://taxi-krk-stit.hr/cjenik","telephone":"+385959046777","address":{"@type":"PostalAddress","streetAddress":"Ribarska obala 24","postalCode":"51512","addressLocality":"Njivice","addressCountry":"HR"}}</script>
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+  <header class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/" aria-label="STIT TAXI početna"><span>STIT TAXI<small>Njivice • Krk</small></span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Glavna navigacija">
+        <a href="/#pocetna" data-i18n="navHome">Početna</a>
+        <a href="/#usluge" data-i18n="navServices">Usluge</a>
+        <a href="/cjenik" data-i18n="navPricing" style="color:var(--gold-2);opacity:1">Cjenik</a>
+        <a href="/#zasto" data-i18n="navWhy">Zašto STIT</a>
+        <a href="/#rezervacija" data-i18n="navContact">Kontakt</a>
+        <a class="mobile-cta" href="tel:+385959046777" data-i18n="navCall">Nazovi odmah</a>
+      </nav>
+      <div class="lang-switch" aria-label="Odabir jezika"><button type="button" class="active" data-lang="hr">HR</button><button type="button" data-lang="en">EN</button></div>
+      <div class="nav-actions"><a class="btn btn-secondary" href="/#rezervacija" data-i18n="navInquiry">Pošalji upit</a><a class="btn btn-primary" href="tel:+385959046777" data-i18n="navCall">Nazovi odmah</a></div>
+      <button class="menu-btn" id="menuBtn" aria-label="Otvori izbornik" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main class="pricing-page">
+    <section class="pricing-hero">
+      <div class="container pricing-hero-grid">
+        <div class="reveal visible">
+          <span class="eyebrow" data-i18n="heroEyebrow">Cjenik autotaksi usluga</span>
+          <h1 data-i18n-html="heroTitle">Jasne tarife. <span class="gold">Premium usluga.</span></h1>
+          <p class="lead" data-i18n="heroLead">Pregled aktualnih cijena STIT TAXI prijevoza iz Njivica, uz sidrene cijene koje su vrijedile 10.09.2026.</p>
+        </div>
+        <aside class="pricing-summary reveal visible" aria-label="Sažetak cjenika">
+          <div class="summary-grid">
+            <div class="summary-item"><span data-i18n="summaryStart">Start vožnje</span><strong>5,00 €</strong></div>
+            <div class="summary-item"><span data-i18n="summaryKm">Tarife po km</span><strong data-i18n="summaryKmValue">od 2,00 €</strong></div>
+            <div class="summary-item"><span data-i18n="summaryPayment">Plaćanje</span><strong data-i18n="summaryPaymentValue">Gotovina · kartice</strong></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section pricing-section">
+      <div class="container">
+        <div class="pricing-section-head reveal">
+          <div><span class="eyebrow" data-i18n="tariffEyebrow">Tarife prijevoza</span><h2 data-i18n="tariffTitle">Cjenik prema duljini vožnje i broju putnika.</h2></div>
+          <p data-i18n="tariffIntro">Sve tarife vrijede 0–24 h prema uvjetima navedenima uz pojedinu stavku. Cijena starta obračunava se uz vožnju.</p>
+        </div>
+
+        <article class="start-card reveal">
+          <div><span class="mini-label" data-i18n="startLabel">Početak vožnje</span><h3 data-i18n="startTitle">Start</h3><p data-i18n="startText">Cijena početka autotaksi vožnje.</p></div>
+          <div class="start-price"><strong>5,00 €</strong><small data-i18n="currentPrice">Aktualna cijena</small><span class="anchor-chip" data-i18n="anchorStart">Cijena 10.09.2026.: 5,00 €</span></div>
+        </article>
+
+        <div class="tariff-shell reveal">
+          <div class="tariff-header"><span data-i18n="colTariff">Tarifa</span><span data-i18n="colCondition">Uvjeti</span><span data-i18n="colPrice">Cijena / km</span></div>
+          <div class="tariff-row"><div class="tariff-name"><span class="tariff-kicker">TARIFA 1</span><strong data-i18n="t1Name">1 osoba</strong></div><div class="tariff-condition"><span class="condition-pill">0–24 h</span><span class="condition-pill" data-i18n="over10">više od 10 km</span></div><div class="tariff-price"><strong>2,00 €</strong><span data-i18n="anchor2">Cijena 10.09.2026.: 2,00 €/km</span></div></div>
+          <div class="tariff-row"><div class="tariff-name"><span class="tariff-kicker">TARIFA 2</span><strong data-i18n="t2Name">2 osobe</strong></div><div class="tariff-condition"><span class="condition-pill">0–24 h</span><span class="condition-pill" data-i18n="over10">više od 10 km</span></div><div class="tariff-price"><strong>2,60 €</strong><span data-i18n="anchor26">Cijena 10.09.2026.: 2,60 €/km</span></div></div>
+          <div class="tariff-row"><div class="tariff-name"><span class="tariff-kicker">TARIFA 3</span><strong data-i18n="t3Name">3 osobe</strong></div><div class="tariff-condition"><span class="condition-pill">0–24 h</span><span class="condition-pill" data-i18n="over10">više od 10 km</span></div><div class="tariff-price"><strong>3,00 €</strong><span data-i18n="anchor3">Cijena 10.09.2026.: 3,00 €/km</span></div></div>
+          <div class="tariff-row"><div class="tariff-name"><span class="tariff-kicker">TARIFA 4</span><strong data-i18n="t4Name">4 osobe</strong></div><div class="tariff-condition"><span class="condition-pill">0–24 h</span><span class="condition-pill" data-i18n="over10">više od 10 km</span></div><div class="tariff-price"><strong>4,00 €</strong><span data-i18n="anchor4">Cijena 10.09.2026.: 4,00 €/km</span></div></div>
+          <div class="tariff-row"><div class="tariff-name"><span class="tariff-kicker">TARIFA 5</span><strong data-i18n="t5Name">Vožnja do 10 km</strong></div><div class="tariff-condition"><span class="condition-pill">0–24 h</span><span class="condition-pill" data-i18n="upTo10">do 10 km</span></div><div class="tariff-price"><strong>5,00 €</strong><span data-i18n="anchor5">Cijena 10.09.2026.: 5,00 €/km</span></div></div>
+        </div>
+
+        <div class="support-grid reveal">
+          <article class="support-card"><span class="support-label" data-i18n="waitingLabel">Čekanje</span><h3 data-i18n="waitingTitle">Sat čekanja</h3><div class="support-value">25,20 € / h</div><span class="anchor-chip" data-i18n="anchorWaiting">Cijena 10.09.2026.: 25,20 €/h</span></article>
+          <article class="support-card"><span class="support-label" data-i18n="luggageLabel">Prtljaga</span><h3 data-i18n="luggageTitle">Po komadu</h3><div class="support-value">1,00 €</div><span class="anchor-chip" data-i18n="anchorLuggage">Cijena 10.09.2026.: 1,00 €/kom</span></article>
+          <article class="support-card payment"><span class="support-label" data-i18n="paymentLabel">Plaćanje</span><h3 data-i18n="paymentTitle">Jednostavno i fleksibilno</h3><div class="support-value" data-i18n="paymentValue">Gotovina + kartice</div><p data-i18n="paymentText">Sredstvo plaćanja su novčanice i bankovne kartice.</p></article>
+        </div>
+
+        <div class="info-note reveal" data-i18n="pricingNote"><strong>Napomena:</strong> Ako stranci ne odgovara cijena po cjeniku, cijena vožnje dogovara se unaprijed.</div>
+
+        <div class="digital-block reveal">
+          <div><span class="digital-kicker">CSV / XML</span><h3 data-i18n="digitalTitle">Digitalni cjenik</h3><p data-i18n="digitalText">Strojno čitljiva verzija cjenika dostupna je u oba formata za direktno preuzimanje i automatizirani dohvat.</p></div>
+          <div class="digital-actions"><a class="btn btn-primary" href="/cjenici/cjenik-aktualni.csv" download data-i18n="downloadCsv">Preuzmi CSV</a><a class="btn btn-secondary" href="/cjenici/cjenik-aktualni.xml" download data-i18n="downloadXml">Preuzmi XML</a></div>
+        </div>
+
+        <div class="business-card reveal">
+          <div><strong>STIT, obrt za prijevoz putnika</strong><span data-i18n="owner">vl. Stipe Prodan</span><br><span>Ribarska obala 24, 51512 Njivice</span><br><span>OIB: 51516189423</span></div>
+          <div><strong data-i18n="complaintTitle">Pisani prigovor</strong><a href="mailto:stipe.prodan@gmail.com">stipe.prodan@gmail.com</a><br><span data-i18n="complaintText">Prigovor možete poslati i poštom na adresu obrta. Odgovor se dostavlja u roku od 15 dana.</span></div>
+        </div>
+      </div>
+    </section>
+    <div class="pricing-footer-space"></div>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><div>© <span id="year"></span> STIT TAXI. <span data-i18n="footerRights">Sva prava pridržana.</span></div><div class="footer-links"><a href="/" data-i18n="navHome">Početna</a><a href="/#usluge" data-i18n="navServices">Usluge</a><a href="/cjenik" data-i18n="navPricing">Cjenik</a><a href="/#rezervacija" data-i18n="navContact">Kontakt</a><a href="/politika-privatnosti" data-i18n="privacy">Politika privatnosti</a><a href="/politika-kolacica" data-i18n="cookies">Politika kolačića</a></div></div></footer>
+
+  <div class="floating-cta" aria-label="Brzi kontakt"><a class="float-btn call" href="tel:+385959046777" aria-label="Nazovi STIT TAXI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.56 0 1 .44 1 1V20c0 .56-.44 1-1 1C10.07 21 3 13.93 3 5c0-.56.44-1 1-1h3.5c.56 0 1 .44 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/></svg></a><a class="float-btn whatsapp" href="https://wa.me/385959046777" target="_blank" rel="noopener" aria-label="WhatsApp STIT TAXI"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.92c0 2.1.55 4.15 1.59 5.96L0 24l6.29-1.65a11.86 11.86 0 0 0 5.78 1.47h.01c6.57 0 11.92-5.35 11.92-11.92a11.84 11.84 0 0 0-3.48-8.42Zm-8.45 18.33h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.64-.24-.37a9.9 9.9 0 0 1-1.52-5.27c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 0 1 2.9 7c0 5.48-4.45 9.93-9.93 9.93Z"/></svg></a></div>
+
+  <script>
+    const translations={
+      hr:{navHome:'Početna',navServices:'Usluge',navPricing:'Cjenik',navWhy:'Zašto STIT',navContact:'Kontakt',navCall:'Nazovi odmah',navInquiry:'Pošalji upit',heroEyebrow:'Cjenik autotaksi usluga',heroTitle:'Jasne tarife. <span class="gold">Premium usluga.</span>',heroLead:'Pregled aktualnih cijena STIT TAXI prijevoza iz Njivica, uz sidrene cijene koje su vrijedile 10.09.2026.',summaryStart:'Start vožnje',summaryKm:'Tarife po km',summaryKmValue:'od 2,00 €',summaryPayment:'Plaćanje',summaryPaymentValue:'Gotovina · kartice',tariffEyebrow:'Tarife prijevoza',tariffTitle:'Cjenik prema duljini vožnje i broju putnika.',tariffIntro:'Sve tarife vrijede 0–24 h prema uvjetima navedenima uz pojedinu stavku. Cijena starta obračunava se uz vožnju.',startLabel:'Početak vožnje',startTitle:'Start',startText:'Cijena početka autotaksi vožnje.',currentPrice:'Aktualna cijena',anchorStart:'Cijena 10.09.2026.: 5,00 €',colTariff:'Tarifa',colCondition:'Uvjeti',colPrice:'Cijena / km',t1Name:'1 osoba',t2Name:'2 osobe',t3Name:'3 osobe',t4Name:'4 osobe',t5Name:'Vožnja do 10 km',over10:'više od 10 km',upTo10:'do 10 km',anchor2:'Cijena 10.09.2026.: 2,00 €/km',anchor26:'Cijena 10.09.2026.: 2,60 €/km',anchor3:'Cijena 10.09.2026.: 3,00 €/km',anchor4:'Cijena 10.09.2026.: 4,00 €/km',anchor5:'Cijena 10.09.2026.: 5,00 €/km',waitingLabel:'Čekanje',waitingTitle:'Sat čekanja',anchorWaiting:'Cijena 10.09.2026.: 25,20 €/h',luggageLabel:'Prtljaga',luggageTitle:'Po komadu',anchorLuggage:'Cijena 10.09.2026.: 1,00 €/kom',paymentLabel:'Plaćanje',paymentTitle:'Jednostavno i fleksibilno',paymentValue:'Gotovina + kartice',paymentText:'Sredstvo plaćanja su novčanice i bankovne kartice.',pricingNote:'Napomena: Ako stranci ne odgovara cijena po cjeniku, cijena vožnje dogovara se unaprijed.',digitalTitle:'Digitalni cjenik',digitalText:'Strojno čitljiva verzija cjenika dostupna je u oba formata za direktno preuzimanje i automatizirani dohvat.',downloadCsv:'Preuzmi CSV',downloadXml:'Preuzmi XML',owner:'vl. Stipe Prodan',complaintTitle:'Pisani prigovor',complaintText:'Prigovor možete poslati i poštom na adresu obrta. Odgovor se dostavlja u roku od 15 dana.',footerRights:'Sva prava pridržana.',privacy:'Politika privatnosti',cookies:'Politika kolačića'},
+      en:{navHome:'Home',navServices:'Services',navPricing:'Price list',navWhy:'Why STIT',navContact:'Contact',navCall:'Call now',navInquiry:'Send inquiry',heroEyebrow:'Taxi service price list',heroTitle:'Clear rates. <span class="gold">Premium service.</span>',heroLead:'Current STIT TAXI rates from Njivice, together with reference prices applicable on 10 September 2026.',summaryStart:'Starting fare',summaryKm:'Rates per km',summaryKmValue:'from €2.00',summaryPayment:'Payment',summaryPaymentValue:'Cash · cards',tariffEyebrow:'Transport rates',tariffTitle:'Rates by ride distance and passenger count.',tariffIntro:'All rates apply 0–24 h according to the conditions shown for each item. The starting fare is charged with the ride.',startLabel:'Starting the ride',startTitle:'Start',startText:'Starting fare for a taxi ride.',currentPrice:'Current price',anchorStart:'Price on 10 Sep 2026: €5.00',colTariff:'Rate',colCondition:'Conditions',colPrice:'Price / km',t1Name:'1 passenger',t2Name:'2 passengers',t3Name:'3 passengers',t4Name:'4 passengers',t5Name:'Ride up to 10 km',over10:'over 10 km',upTo10:'up to 10 km',anchor2:'Price on 10 Sep 2026: €2.00/km',anchor26:'Price on 10 Sep 2026: €2.60/km',anchor3:'Price on 10 Sep 2026: €3.00/km',anchor4:'Price on 10 Sep 2026: €4.00/km',anchor5:'Price on 10 Sep 2026: €5.00/km',waitingLabel:'Waiting',waitingTitle:'One hour waiting',anchorWaiting:'Price on 10 Sep 2026: €25.20/h',luggageLabel:'Luggage',luggageTitle:'Per piece',anchorLuggage:'Price on 10 Sep 2026: €1.00/piece',paymentLabel:'Payment',paymentTitle:'Simple and flexible',paymentValue:'Cash + cards',paymentText:'Payment is accepted in cash and by bank card.',pricingNote:'Note: If the customer does not accept the listed price, the ride price is agreed in advance.',digitalTitle:'Digital price list',digitalText:'A machine-readable version of the price list is available in both formats for direct download and automated access.',downloadCsv:'Download CSV',downloadXml:'Download XML',owner:'owner: Stipe Prodan',complaintTitle:'Written complaint',complaintText:'A complaint may also be sent by post to the business address. A response will be provided within 15 days.',footerRights:'All rights reserved.',privacy:'Privacy Policy',cookies:'Cookie Policy'}
+    };
+    let currentLang=localStorage.getItem('stitLang')||'hr';
+    function setLanguage(lang){currentLang=lang;localStorage.setItem('stitLang',lang);document.documentElement.lang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(translations[lang][k])el.textContent=translations[lang][k]});document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(translations[lang][k])el.innerHTML=translations[lang][k]});document.querySelectorAll('.lang-switch button').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang));}
+    document.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));setLanguage(currentLang);
+    const menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
+    menuBtn.addEventListener('click',()=>{document.body.classList.toggle('menu-open');menuBtn.setAttribute('aria-expanded',document.body.classList.contains('menu-open'))});navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{document.body.classList.remove('menu-open');menuBtn.setAttribute('aria-expanded','false')}));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const reveals=document.querySelectorAll('.reveal');const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});reveals.forEach(el=>observer.observe(el));
+  </script>
+</body></html>

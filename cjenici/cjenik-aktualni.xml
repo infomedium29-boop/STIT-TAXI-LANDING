@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<cjenik>
+  <pruzatelj>
+    <naziv>STIT, obrt za prijevoz putnika</naziv>
+    <vlasnik>Stipe Prodan</vlasnik>
+    <adresa>Ribarska obala 24, 51512 Njivice</adresa>
+    <oib>51516189423</oib>
+    <telefon>+385 95 904 6777</telefon>
+    <email>stipe.prodan@gmail.com</email>
+  </pruzatelj>
+  <objavljeno>2026-09-24</objavljeno>
+  <sidrena_cijena_datum>2026-09-10</sidrena_cijena_datum>
+  <nacin_placanja>Gotovina i bankovne kartice</nacin_placanja>
+  <napomena>Ako stranci ne odgovara cijena po cjeniku, cijena vožnje dogovara se unaprijed.</napomena>
+  <stavke>
+    <stavka oznaka="START">
+      <naziv lang="hr">Cijena početka vožnje</naziv>
+      <naziv lang="en">Price of starting the ride</naziv>
+      <aktualna_cijena valuta="EUR" jedinica="vožnja">5.00</aktualna_cijena>
+      <sidrena_cijena datum="2026-09-10" valuta="EUR" jedinica="vožnja">5.00</sidrena_cijena>
+    </stavka>
+    <stavka oznaka="TARIFA 1">
+      <naziv lang="hr">Cijena vožnje po km</naziv>
+      <naziv lang="en">Driving price per km</naziv>
+      <uvjeti lang="hr">0–24 h; više od 10 km; 1 osoba</uvjeti>
+      <uvjeti lang="en">0–24 h; over 10 km; 1 passenger</uvjeti>
+      <aktualna_cijena valuta="EUR" jedinica="km">2.00</aktualna_cijena>
+      <sidrena_cijena datum="2026-09-10" valuta="EUR" jedinica="km">2.00</sidrena_cijena>
+    </stavka>
+    <stavka oznaka="TARIFA 2">
+      <naziv lang="hr">Cijena vožnje po km</naziv>
+      <naziv lang="en">Driving price per km</naziv>
+      <uvjeti lang="hr">0–24 h; više od 10 km; 2 osobe</uvjeti>
+      <uvjeti lang="en">0–24 h; over 10 km; 2 passengers</uvjeti>
+      <aktualna_cijena valuta="EUR" jedinica="km">2.60</aktualna_cijena>
+      <sidrena_cijena datum="2026-09-10" valuta="EUR" jedinica="km">2.60</sidrena_cijena>
+    </stavka>
+    <stavka oznaka="TARIFA 3">
+      <naziv lang="hr">Cijena vožnje po km</naziv>
+      <naziv lang="en">Driving price per km</naziv>
+      <uvjeti lang="hr">0–24 h; više od 10 km; 3 osobe</uvjeti>
+      <uvjeti lang="en">0–24 h; over 10 km; 3 passengers</uvjeti>
+      <aktualna_cijena valuta="EUR" jedinica="km">3.00</aktualna_cijena>
+      <sidrena_cijena datum="2026-09-10" valuta="EUR" jedinica="km">3.00</sidrena_cijena>
+    </stavka>
+    <stavka oznaka="TARIFA 4">
+      <naziv lang="hr">Cijena vožnje po km</naziv>
+      <naziv lang="en">Driving price per km</naziv>
+      <uvjeti lang="hr">0–24 h; više od 10 km; 4 osobe</uvjeti>
+      <uvjeti lang="en">0–24 h; over 10 km; 4 passengers</uvjeti>
+      <aktualna_cijena valuta="EUR" jedinica="km">4.00</aktualna_cijena>
+      <sidrena_cijena datum="2026-09-10" valuta="EUR" jedinica="km">4.00</sidrena_cijena>
+    </stavka>
+    <stavka oznaka="TARIFA 5">
+      <naziv lang="hr">Cijena vožnje po km</naziv>
+      <naziv lang="en">Driving price per km</naziv>
+      <uvjeti lang="hr">0–24 h; do 10 km</uvjeti>
+      <uvjeti lang="en">0–24 h; up to 10 km</uvjeti>
+      <aktualna_cijena valuta="EUR" jedinica="km">5.00</aktualna_cijena>
+      <sidrena_cijena datum="2026-09-10" valuta="EUR" jedinica="km">5.00</sidrena_cijena>
+    </stavka>
+    <stavka oznaka="ČEKANJE">
+      <naziv lang="hr">Cijena čekanja</naziv>
+      <naziv lang="en">Waiting</naziv>
+      <uvjeti lang="hr">1 h</uvjeti>
+      <uvjeti lang="en">1 h</uvjeti>
+      <aktualna_cijena valuta="EUR" jedinica="sat">25.20</aktualna_cijena>
+      <sidrena_cijena datum="2026-09-10" valuta="EUR" jedinica="sat">25.20</sidrena_cijena>
+    </stavka>
+    <stavka oznaka="PRTLJAGA">
+      <naziv lang="hr">Prtljaga</naziv>
+      <naziv lang="en">Luggage</naziv>
+      <uvjeti lang="hr">1 komad</uvjeti>
+      <uvjeti lang="en">1 piece</uvjeti>
+      <aktualna_cijena valuta="EUR" jedinica="komad">1.00</aktualna_cijena>
+      <sidrena_cijena datum="2026-09-10" valuta="EUR" jedinica="komad">1.00</sidrena_cijena>
+    </stavka>
+  </stavke>
+</cjenik>
